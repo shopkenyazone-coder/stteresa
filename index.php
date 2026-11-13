@@ -69,7 +69,7 @@ $showPoweredBy     = false;
     <div class="container">
       <div class="section-header reveal">
         <span class="eyebrow">Why St. Teresa Kanyange</span>
-        <h2>An Education Beyond the Classroom</h2>
+        <h2>An Nic Beyond the Classroom</h2>
         <p>Our commitment to academic rigor, character formation, and faith-based values creates an environment where every student thrives.</p>
       </div>
       <div class="cards-grid">
