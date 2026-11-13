@@ -15,7 +15,7 @@ $showPoweredBy     = false;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <title>St. Teresa Kanyange Academy | Excellence in Education</title>
+  <title>St. Nic Kanyange Academy | Excellence in Education</title>
   <meta name="description" content="St. Teresa Kanyange is a premier Catholic school offering holistic education from Pre-K through Grade 12, rooted in faith, excellence, and service.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
