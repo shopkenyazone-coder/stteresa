@@ -1,0 +1,64 @@
+# ---------------------------------------------------------------
+# Deploy the website code to HostPinnacle (cPanel) over FTP.
+#
+# Runs when you push to the main branch, or manually from the
+# "Actions" tab (Run workflow).
+#
+# Required GitHub repository secrets (Settings -> Secrets and
+# variables -> Actions -> New repository secret):
+#   FTP_SERVER      e.g. ftp.stteresakanyangeacademy.co.ke  (or the server IP)
+#   FTP_USERNAME    your cPanel FTP username
+#   FTP_PASSWORD    your cPanel FTP password
+#   FTP_SERVER_DIR  the domain folder, e.g. /stteresakanyangeacademy.co.ke/
+#                   (use /public_html/ only if that is the real document root)
+#
+# SAFETY: live content and uploads are excluded, so a deploy can
+# never delete or overwrite:
+#   - data/site-data.json  (slider, logo, settings saved by Admin)
+#   - photos uploaded later through the Admin panel (they live on
+#     the server and are not part of this repository)
+# ---------------------------------------------------------------
+name: Deploy to HostPinnacle
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostpinnacle
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: FTP deploy to cPanel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload website files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./
+          # Never clean the server: only changed files are uploaded.
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/*.zip
+            **/*.log
+            **/.DS_Store
+            **/Thumbs.db
+            **/desktop.ini
+            **/.vscode/**
+            **/.idea/**
+            **/node_modules/**
+            **/data/site-data.json
+            **/data/site-*

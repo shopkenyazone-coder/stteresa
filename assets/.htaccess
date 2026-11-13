@@ -1,0 +1,6 @@
+# Uploaded images are static files only. Never execute anything from this folder.
+Options -Indexes
+
+<FilesMatch "\.(php|phtml|phar|cgi|pl|py|sh|shtml|htaccess)$">
+  Require all denied
+</FilesMatch>

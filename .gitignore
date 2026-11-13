@@ -1,0 +1,38 @@
+# ---------------------------------------------------------------
+# St. Teresa Kanyange Academy — Git ignore
+# Goal: code updates must never delete or overwrite content that
+# was created on the live server (saved site data or uploaded photos).
+# ---------------------------------------------------------------
+
+# Content saved by the admin panel on the server (slider, logo,
+# settings, accounts, etc.). Lives only on the live server, so it
+# is never overwritten by a code push/pull.
+data/*
+!data/.htaccess
+
+# Local/deployment archives and OS junk (never part of the website).
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE folders
+.vscode/
+.idea/
+
+# ---------------------------------------------------------------
+# PHP / MySQL upgrade (never commit credentials or private data)
+# ---------------------------------------------------------------
+config/config.php
+storage/logs/*
+storage/imports/*
+!storage/.htaccess
+!storage/logs/.gitkeep
+!storage/imports/.gitkeep
+storage/backups/*
+!storage/backups/.gitkeep
+config/database.php
+
+database/exports/*
+!database/exports/.gitkeep
