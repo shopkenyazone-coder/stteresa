@@ -1024,6 +1024,47 @@ const Auth = {
   async changePassword(currentPassword, newPassword) {
     const s = this.session();
     if (!s) return { ok: false, error: 'Please sign in again.' };
+
+    /* Server-auth mode: MySQL is the authority, so verify and update there.
+       The local browser copy holds no password material anymore. */
+    if (window.STA_SERVER_AUTH) {
+      try {
+        const root = window.STA_ROOT_URL || new URL('../', document.baseURI).href;
+        const res = await fetch(new URL('api/change-password.php', root).href, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': window.STA_SERVER_CSRF || ''
+          },
+          body: JSON.stringify({
+            currentPassword: String(currentPassword == null ? '' : currentPassword),
+            newPassword: String(newPassword == null ? '' : newPassword).trim()
+          })
+        });
+        const r = await res.json().catch(() => null);
+        if (!res.ok || !r || !r.ok) {
+          return { ok: false, error: (r && r.error) || 'The password could not be changed on the server.' };
+        }
+        const users = DB.get('users');
+        const i = users.findIndex(x => x.id === s.id);
+        if (i !== -1) {
+          delete users[i].mustChangePassword;
+          delete users[i].tempPasswordExpiresAt;
+          delete users[i].password;
+          delete users[i].passwordHash;
+          users[i].passwordChangedAt = new Date().toISOString();
+          users[i].failedLoginCount = 0;
+          DB.set('users', users);
+        }
+        this._saveSession({ ...s, mustChangePassword: false });
+        if (typeof Audit !== 'undefined') Audit.log('auth.password.change', 'Password changed for ' + (s.username || s.id) + ' (' + s.role + ')');
+        return { ok: true };
+      } catch (e) {
+        return { ok: false, error: 'Could not reach the server to change the password. Nothing was changed.' };
+      }
+    }
+
     const users = DB.get('users');
     const i = users.findIndex(x => x.id === s.id);
     if (i === -1) return { ok: false, error: 'Account not found.' };
