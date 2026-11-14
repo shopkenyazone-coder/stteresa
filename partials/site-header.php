@@ -54,6 +54,7 @@ $navLinks = [
         <a href="<?= sta_e($href) ?>"<?= $navActive === $key ? ' class="active"' : '' ?>><?= sta_e($label) ?></a>
 <?php endforeach; ?>
         <a href="admissions.php" class="btn-apply">Apply Now</a>
+        <a href="admin/login.php" class="mobile-only-portal">Portal Login</a>
       </nav>
       <button class="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
