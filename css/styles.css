@@ -1449,6 +1449,10 @@ tbody tr:last-child td {
 }
 
 @media (max-width: 768px) {
+  .header {
+    z-index: 1002;
+  }
+
   .hamburger {
     display: flex;
   }
