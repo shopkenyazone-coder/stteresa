@@ -34,6 +34,7 @@ if ($current !== null) {
 }
 
 $error = '';
+$retryAfter = 0;
 $username = '';
 $portalRole = sta_get_string('role', 'admin');
 
@@ -64,6 +65,7 @@ if (sta_is_post()) {
             sta_redirect($portalHomes[$user['role']] ?? '../admin/dashboard.php');
         }
 
+        $retryAfter = (int) ($result['retry_after'] ?? 0);
         $error = $result['error'] ?? 'Invalid username or password. Please try again.';
     }
 }
@@ -119,7 +121,7 @@ $csrfToken = Csrf::token();
       </button>
     </div>
 
-    <div class="login-error<?= $error !== '' ? ' show' : '' ?>" id="loginError" role="alert"><?= sta_e($error) ?></div>
+    <div class="login-error<?= $error !== '' ? ' show' : '' ?>" id="loginError" role="alert" data-retry-after="<?= $retryAfter ?>"><?= sta_e($error) ?></div>
 
     <form class="login-form" id="loginForm" method="post" action="login.php" novalidate>
       <input type="hidden" name="csrf_token" value="<?= sta_e($csrfToken) ?>">
@@ -153,6 +155,23 @@ $csrfToken = Csrf::token();
     var uname = document.getElementById('username');
     var pass = document.getElementById('password');
     var err = document.getElementById('loginError');
+
+    var retryAfter = err ? parseInt(err.getAttribute('data-retry-after') || '0', 10) : 0;
+
+    if (err && retryAfter > 0) {
+      var countdown = retryAfter;
+      var timer = window.setInterval(function () {
+        countdown -= 1;
+
+        if (countdown <= 0) {
+          window.clearInterval(timer);
+          err.textContent = 'You can try again now.';
+          return;
+        }
+
+        err.textContent = 'Too many failed attempts. Please wait ' + countdown + ' seconds and try again.';
+      }, 1000);
+    }
 
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {

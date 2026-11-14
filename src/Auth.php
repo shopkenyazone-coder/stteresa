@@ -107,20 +107,33 @@ final class Auth
         if ($user !== null && self::lockedUntilActive($user)) {
             self::logAttempt($username, $ip, false);
             self::audit('auth.login.locked', 'Locked account attempted: ' . $username, (int) $user['id']);
+
+            $remaining = max(1, strtotime((string) $user['locked_until']) - time());
+
             return [
-                'ok'    => false,
-                'code'  => 'locked',
-                'error' => 'Too many failed attempts. Please wait a few minutes and try again.',
+                'ok'          => false,
+                'code'        => 'locked',
+                'retry_after' => $remaining,
+                'error'       => 'Too many failed attempts. Please wait ' . $remaining . ' seconds and try again.',
             ];
         }
 
-        if (self::tooManyRecentFailures($username, $ip)) {
+        $retryAfter = self::tooManyRecentFailures($username, $ip);
+
+        if ($retryAfter > 0) {
             self::logAttempt($username, $ip, false);
-            self::audit('auth.login.rate_limited', 'Rate limit hit for: ' . $username, $user ? (int) $user['id'] : null);
+
+            self::audit(
+                'auth.login.rate_limited',
+                'Rate limit hit for: ' . $username,
+                $user ? (int) $user['id'] : null
+            );
+
             return [
-                'ok'    => false,
-                'code'  => 'rate_limited',
-                'error' => 'Too many failed attempts. Please wait a few minutes and try again.',
+                'ok'          => false,
+                'code'        => 'rate_limited',
+                'retry_after' => $retryAfter,
+                'error'       => 'Too many failed attempts. Please wait ' . $retryAfter . ' seconds and try again.',
             ];
         }
 
@@ -528,14 +541,7 @@ final class Auth
         }
     }
 
-    /** @param array<string, mixed> $user */
-    private static function lockedUntilActive(array $user): bool
-    {
-        $until = $user['locked_until'] ?? null;
-        return is_string($until) && $until !== '' && strtotime($until) !== false && strtotime($until) > time();
-    }
-
-    private static function tooManyRecentFailures(string $username, string $ip): bool
+    private static function tooManyRecentFailures(string $username, string $ip): int
     {
         $max = (int) Config::get('security.max_login_attempts', 5);
         $minutes = (int) Config::get('security.lockout_minutes', 15);
@@ -543,13 +549,38 @@ final class Auth
 
         $count = (int) Database::value(
             'SELECT COUNT(*) FROM login_attempts
-              WHERE success = 0
+            WHERE success = 0
                 AND attempted_at >= ?
                 AND (username = ? OR ip = ?)',
             [$since, $username, $ip]
         );
 
-        return $count >= $max;
+        if ($count < $max) {
+            return 0;
+        }
+
+        $oldest = Database::value(
+            'SELECT MIN(attempted_at) FROM login_attempts
+            WHERE success = 0
+                AND attempted_at >= ?
+                AND (username = ? OR ip = ?)',
+            [$since, $username, $ip]
+        );
+
+        $oldestTime = is_string($oldest) ? strtotime($oldest) : false;
+
+        if ($oldestTime === false) {
+            return 1;
+        }
+
+        return max(1, $oldestTime + ($minutes * 60) - time());
+    }
+
+    /** @param array<string, mixed> $user */
+    private static function lockedUntilActive(array $user): bool
+    {
+        $until = $user['locked_until'] ?? null;
+        return is_string($until) && $until !== '' && strtotime($until) !== false && strtotime($until) > time();
     }
 
     private static function logAttempt(string $username, string $ip, bool $success): void
