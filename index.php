@@ -28,10 +28,10 @@ $showPoweredBy     = false;
     <div id="heroSlides">
       <div class="hero-slide active">
         <div class="container hero-slide-content">
-          <div class="hero-badge">Est. 1962 &middot; A Tradition of Excellence</div>
+          <div class="hero-badge">Est. 1989 &middot; A Tradition of Excellence</div>
           <h2>Nurturing Minds,<br>Inspiring Hearts</h2>
           <p class="motto">&ldquo;Unity is Strength&rdquo;</p>
-          <p>At St. Teresa KanyangeAcademy, we provide a transformative Catholic education that develops the whole person — mind, body, and spirit — preparing students to lead lives of purpose, integrity, and service.</p>
+          <p>At St. Teresa Kanyange Academy, we provide a transformative Catholic education that develops the whole person — mind, body, and spirit — preparing students to lead lives of purpose, integrity, and service.</p>
           <div class="hero-buttons">
             <a href="admissions.php" class="btn btn-primary">Begin Your Journey</a>
             <a href="about.php" class="btn btn-outline">Discover Our School</a>
@@ -125,7 +125,7 @@ $showPoweredBy     = false;
         <div class="about-image reveal">
           <img id="storyImage" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Students at St. Teresa Kanyange Academy">
           <div class="experience-badge">
-            <span class="num">60+</span>
+            <span class="num">37+</span>
             <span class="txt">Years of Excellence</span>
           </div>
         </div>
