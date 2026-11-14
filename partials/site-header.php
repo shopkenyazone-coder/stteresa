@@ -21,7 +21,6 @@ $navLinks = [
     'academics'  => ['academics.php', 'Academics'],
     'admissions' => ['admissions.php', 'Admissions'],
     'contact'    => ['contact.php', 'Contact'],
-    'portal'     => ['admin/login.php', 'Portal Login'],
 ];
 ?>
   <div class="top-bar">
