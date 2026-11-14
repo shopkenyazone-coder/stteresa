@@ -236,6 +236,47 @@ const Security = {
     const users = DB.get('users');
     const i = users.findIndex(u => u.id === userId);
     if (i === -1) return { ok: false, error: 'Account not found.' };
+
+    /* Server-auth mode: MySQL is the authority for sign-in, so the reset
+       must happen there — a password set only in this browser can never be
+       used at the login page. */
+    if (window.STA_SERVER_AUTH) {
+      try {
+        const root = window.STA_ROOT_URL || new URL('../', document.baseURI).href;
+        const res = await fetch(new URL('api/reset-password.php', root).href, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': window.STA_SERVER_CSRF || ''
+          },
+          body: JSON.stringify({ username: users[i].username, reason: reason || '' })
+        });
+        const r = await res.json().catch(() => null);
+        if (!res.ok || !r || !r.ok) {
+          return { ok: false, error: (r && r.error) || 'The password could not be reset on the server.' };
+        }
+        /* Mirror the flag in the local copy so the admin UI shows the expiry;
+           no password material is stored locally. */
+        users[i].mustChangePassword = true;
+        users[i].tempPasswordExpiresAt = r.expiresAt || this.tempPasswordExpiryDate();
+        users[i].passwordResetAt = new Date().toISOString();
+        users[i].sessionToken = this.newToken();
+        users[i].csrfToken = this.newToken();
+        delete users[i].password;
+        delete users[i].passwordHash;
+        DB.set('users', users);
+        if (typeof Audit !== 'undefined') {
+          Audit.log('auth.password.reset',
+            'Temporary password issued on the server for ' + users[i].username + ' (' + users[i].role + ')' +
+            (reason ? ' — ' + reason : ''));
+        }
+        return { ok: true, tempPassword: r.tempPassword, user: users[i] };
+      } catch (e) {
+        return { ok: false, error: 'Could not reach the server to reset the password. Nothing was changed.' };
+      }
+    }
+
     const temp = this.generateTempPassword();
     users[i].passwordHash = await this.hash(temp);
     delete users[i].password;                    /* never keep plain text */
