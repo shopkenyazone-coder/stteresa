@@ -580,6 +580,7 @@ const SettingsUI = {
         <select id="accStatus" aria-label="Filter by status">${statuses}</select>
         <select id="accSort" aria-label="Sort accounts">${sorts}</select>
         <button type="button" class="btn btn-primary btn-sm" id="accAdd"><i class="fas fa-user-plus"></i> New account</button>
+        ${r.counts.mustChange ? `<button type="button" class="btn btn-outline btn-sm" id="accResetAll" title="Issue a fresh temporary password for every account flagged 'Must change password'"><i class="fas fa-key"></i> Reset all flagged (${r.counts.mustChange})</button>` : ''}
       </div>
 
       <div class="acc-list">
@@ -643,6 +644,8 @@ const SettingsUI = {
     bind('accSort', 'sort');
     const add = pane.querySelector('#accAdd');
     if (add) add.addEventListener('click', () => this.openAccountEditor(null));
+    const resetAll = pane.querySelector('#accResetAll');
+    if (resetAll) resetAll.addEventListener('click', () => this.resetAllFlagged());
 
     pane.querySelectorAll('[data-reset]').forEach(b => b.addEventListener('click', () => this.resetPassword(b.dataset.reset)));
     pane.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => this.openAccountEditor(b.dataset.edit)));
@@ -746,6 +749,75 @@ const SettingsUI = {
     const res = await Security.issueTemporaryPassword(userId, 'Admin-assisted reset');
     if (!res.ok) return toast(res.error, 'error');
     this._showTempPassword(res.user, res.tempPassword);
+  },
+
+  /* Bulk reset: one temporary password per account flagged
+     "must change password", shown exactly once in a single list.
+     Uses the same server-side reset as the per-account button, so each
+     account is signed out everywhere and gets its own audit entry. */
+  async resetAllFlagged() {
+    const users = DB.get('users');
+    const targets = users.filter(u => u.mustChangePassword);
+    if (!targets.length) return toast('No accounts are flagged for a password change.', 'error');
+    if (!confirm('Issue a NEW temporary password for all ' + targets.length + ' account(s) flagged "Must change password"?\n\nTheir current temporary passwords will stop working immediately. Each user must sign in with the new one and set their own password.')) return;
+
+    const btn = document.getElementById('accResetAll');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Resetting…'; }
+
+    const results = [];
+    for (const t of targets) {
+      try {
+        const res = await Security.issueTemporaryPassword(t.id, 'Bulk administrator reset');
+        results.push({ username: t.username, name: t.name || '', ok: !!(res && res.ok), temp: res && res.tempPassword, error: res && res.error });
+      } catch (e) {
+        results.push({ username: t.username, name: t.name || '', ok: false, error: 'Unexpected error.' });
+      }
+    }
+
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fas fa-key"></i> Reset all flagged'; }
+    this._showBulkTempPasswords(results);
+    this._refreshAccounts();
+  },
+
+  _showBulkTempPasswords(results) {
+    const old = document.getElementById('bulkPwModal'); if (old) old.remove();
+    const okCount = results.filter(r => r.ok).length;
+    const lines = results.map(r => r.ok ? (r.username + '\t' + r.temp) : (r.username + '\tFAILED: ' + (r.error || 'error'))).join('\n');
+    const m = document.createElement('div');
+    m.id = 'bulkPwModal';
+    m.className = 'modal-overlay show';
+    m.innerHTML = `
+      <div class="modal settings-dialog" role="dialog" aria-modal="true" style="max-width:720px">
+        <div class="modal-head"><h3><i class="fas fa-key"></i> Bulk temporary passwords</h3></div>
+        <p class="pane-note"><i class="fas fa-triangle-exclamation"></i> ${okCount} of ${results.length} reset succeeded. These passwords are shown <strong>once</strong> and cannot be recovered. Copy or download the list now, then distribute each password to its user privately.</p>
+        <div class="table-wrap" style="max-height:420px;overflow:auto">
+          <table class="data-table"><thead><tr><th>Username</th><th>Name</th><th>Temporary password / result</th></tr></thead>
+            <tbody>${results.map(r => `<tr><td><code>${esc(r.username)}</code></td><td>${esc(r.name)}</td><td>${r.ok ? `<code>${esc(r.temp)}</code>` : `<span style="color:var(--red,#c0392b)">${esc(r.error || 'Failed')}</span>`}</td></tr>`).join('')}</tbody>
+          </table>
+        </div>
+        <div class="pane-actions" style="display:flex;gap:10px;flex-wrap:wrap">
+          <button type="button" class="btn btn-primary" id="bulkPwCopy"><i class="fas fa-copy"></i> Copy all</button>
+          <button type="button" class="btn btn-outline" id="bulkPwDownload"><i class="fas fa-download"></i> Download .txt</button>
+          <button type="button" class="btn btn-ghost" id="bulkPwDone">Done</button>
+        </div>
+      </div>`;
+    document.body.appendChild(m);
+    const done = () => { m.remove(); this.open('accounts'); };
+    m.querySelector('#bulkPwDone').addEventListener('click', done);
+    m.addEventListener('click', e => { if (e.target === m) done(); });
+    m.querySelector('#bulkPwCopy').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(lines); toast('Copied ' + results.length + ' lines to clipboard.'); }
+      catch (e) { toast('Copy failed — use Download instead.', 'error'); }
+    });
+    m.querySelector('#bulkPwDownload').addEventListener('click', () => {
+      const blob = new Blob([lines + '\n'], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'temporary-passwords-' + new Date().toISOString().slice(0, 10) + '.txt';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      toast('Downloaded. Keep the file safe and delete it after distribution.');
+    });
   },
 
   /* The temporary password is shown exactly once and can never be recovered. */
