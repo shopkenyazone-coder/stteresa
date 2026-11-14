@@ -32,6 +32,9 @@ storage/imports/*
 !storage/imports/.gitkeep
 storage/backups/*
 !storage/backups/.gitkeep
+storage/sessions/*
+!storage/sessions/.gitkeep
+!storage/sessions/.htaccess
 config/database.php
 
 database/exports/*

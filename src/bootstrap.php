@@ -52,6 +52,22 @@ if (session_status() === PHP_SESSION_NONE) {
     $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
         || (($_SERVER['SERVER_PORT'] ?? '') === '443');
 
+    /* Shared hosting often ships a broken or non-writable default session
+       save path, which silently drops every session and makes CSRF tokens
+       fail ("Your session has expired"). Use a project-local path when we
+       can; fall back to the server default otherwise. */
+    $sessionDir = STA_ROOT . '/storage/sessions';
+    if (!is_dir($sessionDir)) {
+        @mkdir($sessionDir, 0700, true);
+    }
+    if (is_dir($sessionDir) && is_writable($sessionDir)) {
+        $htaccess = $sessionDir . '/.htaccess';
+        if (!is_file($htaccess)) {
+            @file_put_contents($htaccess, "Require all denied\n");
+        }
+        session_save_path($sessionDir);
+    }
+
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     ini_set('session.cookie_httponly', '1');
