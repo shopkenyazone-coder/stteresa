@@ -76,7 +76,7 @@ const Submissions = {
     if (!s || !sub) return false;
     if (sub.status === 'rejected') return s.role === 'teacher' && sub.submittedById === s.id;
     if (sub.status === 'draft') return s.role === 'teacher' && sub.submittedById === s.id;
-    if (sub.status === 'approved_final') return s.role === 'secretary';
+    if (sub.status === 'approved_final') return Perm.canPublishDocuments();
     if (!Perm.canApproveStage(sub.status)) return false;
     // a teacher may never act on their own submission
     if (sub.submittedById === s.id && s.role === 'teacher') return false;
@@ -84,7 +84,7 @@ const Submissions = {
   },
   canPublish(sub) {
     const s = Auth.session();
-    return !!s && sub.status === 'approved_final' && s.role === 'secretary';
+    return !!s && sub.status === 'approved_final' && Perm.canPublishDocuments();
   },
 
   /* ---------- CREATE / RESUBMIT ---------- */
@@ -222,7 +222,7 @@ const Submissions = {
   publish(id, target, scheduledAt) {
     const sub = this.get(id);
     if (!sub) return { ok: false, error: 'Submission not found.' };
-    if (!Perm.canPublishDocuments()) return { ok: false, error: 'Only the Secretary has final publishing authority.' };
+    if (!Perm.canPublishDocuments()) return { ok: false, error: 'Only the Secretary or Administrator has final publishing authority.' };
     if (sub.status !== 'approved_final') {
       return { ok: false, error: 'Cannot publish: this document has not completed all mandatory approval stages (current: ' + this.statusLabel(sub.status) + '). Record the Secretary\u2019s final approval first.' };
     }
@@ -252,7 +252,7 @@ const Submissions = {
   unpublish(id, reason) {
     const sub = this.get(id);
     if (!sub) return { ok: false, error: 'Submission not found.' };
-    if (!Perm.canPublishDocuments()) return { ok: false, error: 'Only the Secretary can withdraw a published document.' };
+    if (!Perm.canPublishDocuments()) return { ok: false, error: 'Only the Secretary or Administrator can withdraw a published document.' };
     if (sub.status !== 'published') return { ok: false, error: 'Only published documents can be withdrawn.' };
     if (!(reason || '').trim()) return { ok: false, error: 'A reason is required to withdraw a published document.' };
     const s = Auth.session();
@@ -495,7 +495,7 @@ const ApprovalUI = {
       ${fileBox}
       ${sub.chiefExaminer ? ApprovalUI.decisionBox('Chief Examiner', sub.chiefExaminer) : ''}
       ${sub.headteacher ? ApprovalUI.decisionBox('Headteacher', sub.headteacher) : ''}
-      ${sub.secretary ? ApprovalUI.decisionBox('Secretary', sub.secretary) : ''}
+      ${sub.secretary ? ApprovalUI.decisionBox((sub.secretary.byRole === 'admin' || sub.secretary.byRole === 'director') ? 'Administrator' : 'Secretary', sub.secretary) : ''}
       <h4 style="color:var(--navy);margin:16px 0 8px"><i class="fas fa-clock-rotate-left"></i> Approval History</h4>
       <div class="table-wrap"><table class="data-table">
         <thead><tr><th>Date &amp; Time</th><th>Stage</th><th>Action</th><th>By</th><th>Comment</th></tr></thead>
@@ -634,7 +634,7 @@ const ApprovalUI = {
   publishPrompt(id) {
     const sub = Submissions.get(id);
     if (!sub) return;
-    if (!Perm.canPublishDocuments()) return toast('Only the Secretary can publish.', 'error');
+    if (!Perm.canPublishDocuments()) return toast('Only the Secretary or Administrator can publish.', 'error');
     if (sub.status !== 'approved_final') return toast('Record the Secretary\u2019s final approval first (current: ' + Submissions.statusLabel(sub.status) + ').', 'error');
     const target = prompt('Publish to which portal?\nType: student, staff or both', 'student');
     if (!target) return;

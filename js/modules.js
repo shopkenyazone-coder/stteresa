@@ -121,11 +121,14 @@ const Perm = {
     if (!s) return false;
     if (stage === 'chiefexaminer') return s.role === 'chiefexaminer';
     if (stage === 'headteacher') return s.role === 'headteacher';
-    if (stage === 'secretary' || stage === 'publish') return s.role === 'secretary';
+    if (stage === 'secretary' || stage === 'publish') return this.canPublishDocuments();
     return false;
   },
   canMonitorApprovals() { return this.isSuper() || this.isChiefExaminer() || this.isHeadteacher(); },
-  canPublishDocuments() { const s = Auth.session(); return !!s && s.role === 'secretary'; },
+  /* Final sign-off and publication are shared by the Secretary and the
+     Administrator (the final say). The Headteacher remains a stage reviewer
+     only and cannot publish or record the final approval. */
+  canPublishDocuments() { const s = Auth.session(); return !!s && ['secretary', 'admin', 'director'].includes(s.role); },
   /* ---- inventory: department-scoped, enforced at the data layer ---- */
   canManageInventory(dept) {
     const s = Auth.session();
