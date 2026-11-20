@@ -779,7 +779,7 @@ const ApprovalUI = {
       const stats = Submissions.statsFor();
       const s = Auth.session();
       show('badge-approvals', stats.pending);
-      show('badge-publishqueue', s && s.role === 'secretary' ? stats.secretary + stats.approved_final : 0);
+      show('badge-publishqueue', s && Perm.canPublishDocuments() ? stats.secretary + stats.approved_final : 0);
       show('badge-mysubs', Submissions.myPendingCount());
     } catch (e) { console.error(e); }
   },

@@ -56,6 +56,7 @@ require __DIR__ . '/../src/bootstrap.php';
       <a href="#" data-section="fee-structures" data-title="Fee Structures"><i class="fas fa-file-invoice-dollar"></i> Fee Structures</a>
       <div class="nav-label">Approvals</div>
       <a href="#" data-section="approvals-monitor" data-title="Document Approvals"><i class="fas fa-stamp"></i> Document Approvals <span class="badge badge-danger" id="badge-approvals" style="display:none;margin-left:4px"></span></a>
+      <a href="#" data-section="publish-queue" data-title="Publication Queue"><i class="fas fa-bullhorn"></i> Publication Queue <span class="badge badge-danger" id="badge-publishqueue" style="display:none;margin-left:4px"></span></a>
       <div class="nav-label">System</div>
       <a href="#" data-section="contact-messages" data-title="Contact Messages"><i class="fas fa-envelope-open-text"></i> Contact Messages <span class="badge badge-danger" id="badge-contactmsgs" style="display:none;margin-left:4px"></span></a>
       <a href="#" data-section="messaging" data-title="Messaging Centre"><i class="fas fa-comments"></i> Messaging Centre</a>
@@ -708,7 +709,7 @@ require __DIR__ . '/../src/bootstrap.php';
         <div class="section-head">
           <div>
             <h2>Document Approvals Monitor</h2>
-            <p>Read-only oversight of every document moving through the Chief Examiner â†’ Headteacher â†’ Secretary â†’ Publication chain.</p>
+            <p>Oversight of every document moving through the Chief Examiner → Headteacher → Secretary → Publication chain. As Administrator you hold final authority: publish, schedule or withdraw documents at the final stage.</p>
           </div>
           <button class="btn btn-outline" onclick="renderApprovalMonitor()"><i class="fas fa-rotate"></i> Refresh</button>
         </div>
@@ -727,6 +728,33 @@ require __DIR__ . '/../src/bootstrap.php';
             <select id="admSubType" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px"><option value="">All Types</option></select>
           </div>
           <div class="panel-body" id="admSubBody"></div>
+        </div>
+      </section>
+
+      <!-- PUBLICATION QUEUE (Admin final authority) -->
+      <section class="page-section" id="sec-publish-queue">
+        <div class="section-head">
+          <div>
+            <h2>Publication Queue</h2>
+            <p>Documents approved by the Chief Examiner and Headteacher await final review before being published to the student or staff portal. As Administrator you share the Secretary's final authority to approve, return, publish or withdraw.</p>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="s-icon gold"><i class="fas fa-inbox"></i></div><div class="s-info"><div class="s-num" id="secPubPending">0</div><div class="s-label">Awaiting Publication</div></div></div>
+          <div class="stat-card"><div class="s-icon green"><i class="fas fa-bullhorn"></i></div><div class="s-info"><div class="s-num" id="secPubPublished">0</div><div class="s-label">Published</div></div></div>
+          <div class="stat-card"><div class="s-icon red"><i class="fas fa-rotate-left"></i></div><div class="s-info"><div class="s-num" id="secPubRejected">0</div><div class="s-label">Returned for Correction</div></div></div>
+          <div class="stat-card"><div class="s-icon navy"><i class="fas fa-files"></i></div><div class="s-info"><div class="s-num" id="secPubTotal">0</div><div class="s-label">Total Submissions</div></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-body" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <input type="text" id="secPubSearch" placeholder="Search tracking no, title, class…" style="flex:1;min-width:220px;padding:9px 12px;border:1px solid var(--border);border-radius:8px">
+            <select id="secPubType" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px"><option value="">All Types</option></select>
+          </div>
+          <div class="panel-body" id="secPublishBody"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3><i class="fas fa-clock-rotate-left" style="color:var(--gold)"></i> Published Documents</h3></div>
+          <div class="panel-body" id="secPublishHistory"></div>
         </div>
       </section>
 
