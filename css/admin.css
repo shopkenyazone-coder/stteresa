@@ -371,6 +371,22 @@ button { cursor: pointer; font-family: inherit; }
 
 .sidebar-footer a:hover { color: var(--gold-light); }
 
+/* ---------- SHOPIX credit (portals, login, redirect pages) ---------- */
+.sidebar-credit {
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.42);
+}
+.sidebar-credit strong { color: rgba(255, 255, 255, 0.68); font-weight: 700; }
+.sidebar-credit .pby-dot { color: var(--gold-light); }
+.sidebar-footer a.sidebar-credit:hover { color: rgba(255, 255, 255, 0.7); }
+.sidebar-footer a.sidebar-credit:hover strong { color: var(--gold-light); }
+.login-credit { margin-top: 14px; text-align: center; font-size: 0.74rem; color: var(--text-light); }
+.login-credit .pby-dot { color: var(--gold); }
+.login-credit a { color: var(--navy); font-weight: 600; }
+.login-credit a:hover, .login-credit a:hover strong { color: var(--gold); }
+
 /* ===== MAIN CONTENT ===== */
 .main-content {
   margin-left: var(--sidebar-w);

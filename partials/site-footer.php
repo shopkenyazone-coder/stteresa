@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 
 $footerPortalLink = $footerPortalLink ?? false;
-$showPoweredBy    = $showPoweredBy ?? false;
+$showPoweredBy    = $showPoweredBy ?? true;
 ?>
   <footer class="footer">
     <div class="container">
@@ -68,7 +68,7 @@ $showPoweredBy    = $showPoweredBy ?? false;
       <div class="footer-bottom">
         <p>&copy; 2026 St. Teresa Academy. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 <?php if ($showPoweredBy): ?>
-        <p class="powered-by">Powered by <span class="pby-dot">&#9670;</span> <a class="pby-brand" href="https://shopixhubsolution.co.ke" target="_blank" rel="noopener" title="Visit SHOPIX HUB SOLUTION website"><strong>SHOPIX HUB SOLUTION</strong></a><br><span class="pby-sub">Website Design &amp; Development &mdash; <a href="tel:+254703626702">Contacts 0703626702</a></span></p>
+        <p class="powered-by">Powered by <span class="pby-dot">&#9670;</span> <a class="pby-brand" href="https://shopixhub.co.ke/" target="_blank" rel="noopener" title="Visit SHOPIX HUB SOLUTION website"><strong>SHOPIX HUB SOLUTION</strong></a><br><span class="pby-sub">Website Design &amp; Development &mdash; <a href="tel:+254703626702">Contacts 0703626702</a></span></p>
 <?php endif; ?>
       </div>
     </div>

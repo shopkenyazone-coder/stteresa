@@ -66,6 +66,7 @@ require __DIR__ . '/../src/bootstrap.php';
     <div class="sidebar-footer">
       <a href="../index.php"><i class="fas fa-globe"></i> View Website</a>
       <a href="login.php" id="sidebarLogout"><i class="fas fa-right-from-bracket"></i> Logout</a>
+      <a class="sidebar-credit" href="https://shopixhub.co.ke/" target="_blank" rel="noopener" title="Visit SHOPIX HUB SOLUTION website">Powered by <span class="pby-dot">&#9670;</span> <strong>SHOPIX HUB SOLUTION</strong></a>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>

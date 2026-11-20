@@ -131,6 +131,8 @@ $roleLabel = $roleLabels[$user['role']] ?? ucfirst((string) $user['role']);
 
     <a href="#" class="login-back" id="changeCancel"><i class="fas fa-right-from-bracket" aria-hidden="true"></i> Sign out instead</a>
 
+    <p class="login-credit">Powered by <span class="pby-dot">&#9670;</span> <a href="https://shopixhub.co.ke/" target="_blank" rel="noopener" title="Visit SHOPIX HUB SOLUTION website"><strong>SHOPIX HUB SOLUTION</strong></a></p>
+
   </main>
 
   <script>

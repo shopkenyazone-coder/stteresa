@@ -28,6 +28,7 @@ require __DIR__ . '/../src/bootstrap.php';
     <p>Uniform stock is now managed from the <strong>Stores portal</strong> alongside every other item, so there is one stock account instead of several.</p>
     <a class="btn btn-primary" href="../store/dashboard.php"><i class="fas fa-boxes-stacked"></i> Open the Stores portal</a>
   </main>
+  <p class="login-credit" style="text-align:center">Powered by <span class="pby-dot">&#9670;</span> <a href="https://shopixhub.co.ke/" target="_blank" rel="noopener" title="Visit SHOPIX HUB SOLUTION website"><strong>SHOPIX HUB SOLUTION</strong></a></p>
   <script>
     /* Send legacy bookmarks on immediately; the link above covers no-JS. */
     setTimeout(function () { window.location.replace('../store/dashboard.php'); }, 400);

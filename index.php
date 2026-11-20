@@ -7,7 +7,7 @@ $navActive         = 'home';
 $brandCrest        = 'STK';
 $showTopPortalLink = true;
 $footerPortalLink  = true;
-$showPoweredBy     = false;
+$showPoweredBy     = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">

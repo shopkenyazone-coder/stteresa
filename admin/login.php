@@ -140,6 +140,8 @@ $csrfToken = Csrf::token();
 
     <a href="../index.php" class="login-back"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to School Website</a>
 
+    <p class="login-credit">Powered by <span class="pby-dot">&#9670;</span> <a href="https://shopixhub.co.ke/" target="_blank" rel="noopener" title="Visit SHOPIX HUB SOLUTION website"><strong>SHOPIX HUB SOLUTION</strong></a></p>
+
   </main>
 
   <script>
