@@ -450,13 +450,16 @@ img {
 }
 
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   text-align: center;
 }
 
 .stat-item {
+  flex: 1 1 220px;
+  max-width: 300px;
   color: var(--white);
 }
 
