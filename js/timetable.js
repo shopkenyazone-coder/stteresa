@@ -58,7 +58,13 @@ const TT_DEFAULT_CLASSES = [
   { name: 'Grade 8: Mwai Kibaki', shortName: '8M' },
   { name: 'Grade 8: Wangari Maathai', shortName: '8W' },
   { name: 'Grade 9: Mwai Kibaki', shortName: '9M' },
-  { name: 'Grade 9: Wangari Maathai', shortName: '9W' }
+  { name: 'Grade 9: Wangari Maathai', shortName: '9W' },
+  { name: 'Grade 10: Mwai Kibaki', shortName: '10M' },
+  { name: 'Grade 10: Wangari Maathai', shortName: '10W' },
+  { name: 'Grade 11: Mwai Kibaki', shortName: '11M' },
+  { name: 'Grade 11: Wangari Maathai', shortName: '11W' },
+  { name: 'Grade 12: Mwai Kibaki', shortName: '12M' },
+  { name: 'Grade 12: Wangari Maathai', shortName: '12W' }
 ];
 const TT_DEFAULT_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 const TT_DAYS_ORDER = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

@@ -1190,7 +1190,7 @@ require __DIR__ . '/../src/bootstrap.php';
           <div class="form-group">
             <label>Grade</label>
             <select id="ttmGrade" required>
-              <option value="Pre-K">Pre-K</option><option value="K">Kindergarten</option>
+              <option value="PP1">PP1</option><option value="PP2">PP2</option>
               <option value="1">Grade 1</option><option value="2">Grade 2</option>
               <option value="3">Grade 3</option><option value="4">Grade 4</option>
               <option value="5">Grade 5</option><option value="6">Grade 6</option>

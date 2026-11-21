@@ -20,7 +20,7 @@ const DB = {
 };
 
 /* ---------- SEED DEFAULT DATA ---------- */
-const ACADEMIC_CLASSES = ['PP1', 'PP2', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9'];
+const ACADEMIC_CLASSES = ['PP1', 'PP2', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
 
 /* The school's official classes and streams, used by Admin → Class Management.
    Kept in step with TT_DEFAULT_CLASSES in js/timetable.js. */
@@ -36,7 +36,10 @@ const OFFICIAL_CLASSES = [
   'Grade 6: Mt. Kenya', 'Grade 6: Mt. Ruwenzori', 'Grade 6: Mt. Kilimanjaro',
   'Grade 7: Mwai Kibaki', 'Grade 7: Wangari Maathai',
   'Grade 8: Mwai Kibaki', 'Grade 8: Wangari Maathai',
-  'Grade 9: Mwai Kibaki', 'Grade 9: Wangari Maathai'
+  'Grade 9: Mwai Kibaki', 'Grade 9: Wangari Maathai',
+  'Grade 10: Mwai Kibaki', 'Grade 10: Wangari Maathai',
+  'Grade 11: Mwai Kibaki', 'Grade 11: Wangari Maathai',
+  'Grade 12: Mwai Kibaki', 'Grade 12: Wangari Maathai'
 ];
 
 /* Kindergarten 2026 teaching team. Each entry is added to staff + timetable
@@ -91,11 +94,11 @@ const DEFAULT_SUBJECTS = ['Mathematics', 'English', 'Kiswahili', 'Science', 'Soc
 
 const DEFAULT_ACCOUNTS = [
   { username: 'admin', password: 'admin123', role: 'admin', name: 'System Administrator', email: 'admin@stteresaacademy.edu' },
-  { username: 'teacher', password: 'teacher123', role: 'teacher', name: 'Mrs. Margaret OBrien', email: 'mobrien@stteresaacademy.edu', subject: 'Mathematics' },
-  { username: 'secretary', password: 'secretary123', role: 'secretary', name: 'Ms. Linda Vasquez', email: 'lvasquez@stteresaacademy.edu' },
-  { username: 'student', password: 'student123', role: 'student', name: 'John Smith', email: 'jsmith@student.stteresa.edu', grade: 'Grade 10', className: 'Grade 9' },
+  { username: 'teacher', password: 'teacher123', role: 'teacher', name: 'Mrs. Margaret Wanjiru', email: 'mobrien@stteresaacademy.edu', subject: 'Mathematics' },
+  { username: 'secretary', password: 'secretary123', role: 'secretary', name: 'Ms. Linda Wanjiku', email: 'lvasquez@stteresaacademy.edu' },
+  { username: 'student', password: 'student123', role: 'student', name: 'John Kamau', email: 'jsmith@student.stteresa.edu', grade: 'Grade 10', className: 'Grade 9' },
   { username: 'headteacher', password: 'head123', role: 'headteacher', name: 'Sr. Catherine Marie', email: 'cmarie@stteresaacademy.edu' },
-  { username: 'chiefexaminer', password: 'chief123', role: 'chiefexaminer', name: 'Mr. Anthony Rossi', email: 'arossi@stteresaacademy.edu', subject: 'Mathematics' },
+  { username: 'chiefexaminer', password: 'chief123', role: 'chiefexaminer', name: 'Mr. Anthony Maina', email: 'arossi@stteresaacademy.edu', subject: 'Mathematics' },
   { username: 'storekeeper', password: 'store123', role: 'storekeeper', name: 'Mr. Peter Kamau', email: 'pkamau@stteresaacademy.edu' },
   { username: 'kitchenmanager', password: 'kitchen123', role: 'kitchenmanager', name: 'Ms. Grace Njeri', email: 'gnjeri@stteresaacademy.edu' },
     { username: 'uniformjunior', password: 'uniform123', role: 'storekeeper', name: 'Ms. Ruth Achieng', email: 'rachieng@stteresaacademy.edu', uniformDepts: ['junior_uniform'] },
@@ -106,19 +109,19 @@ function seedData() {
   if (!localStorage.getItem('sta_seeded')) {
     DB.set('users', DEFAULT_ACCOUNTS.map(a => ({ id: DB.uid(), ...a })));
     DB.set('students', [
-      { id: DB.uid(), firstName: 'John', lastName: 'Smith', email: 'jsmith@student.stteresa.edu', grade: 'Grade 10', className: 'Grade 9', admissionNo: 'STA-2024-001', gender: 'Male', dob: '2010-05-14', parentName: 'Robert Smith', parentPhone: '(555) 201-8899', parentEmail: 'rsmith@parent.stteresa.edu', address: '42 Oak Lane, Fairfield, CT', admissionDate: '2024-08-20', status: 'active', feeBalance: 0, photo: '' },
-      { id: DB.uid(), firstName: 'Emily', lastName: 'Johnson', email: 'ejohnson@student.stteresa.edu', grade: 'Grade 9', className: 'Grade 9', admissionNo: 'STA-2025-002', gender: 'Female', dob: '2011-03-22', parentName: 'Michael Johnson', parentPhone: '(555) 334-1122', parentEmail: 'mjohnson@parent.stteresa.edu', address: '18 Pine Road, Fairfield, CT', admissionDate: '2025-08-19', status: 'active', feeBalance: 12500, photo: '' }
+      { id: DB.uid(), firstName: 'John', lastName: 'Kamau', email: 'jsmith@student.stteresa.edu', grade: 'Grade 10', className: 'Grade 9', admissionNo: 'STA-2024-001', gender: 'Male', dob: '2010-05-14', parentName: 'Robert Kamau', parentPhone: '+254 712 201889', parentEmail: 'rkamau@parent.stteresa.edu', address: 'Othaya, Nyeri County, Kenya', admissionDate: '2024-08-20', status: 'active', feeBalance: 0, photo: '' },
+      { id: DB.uid(), firstName: 'Emily', lastName: 'Chebet', email: 'ejohnson@student.stteresa.edu', grade: 'Grade 9', className: 'Grade 9', admissionNo: 'STA-2025-002', gender: 'Female', dob: '2011-03-22', parentName: 'Michael Chebet', parentPhone: '+254 733 334112', parentEmail: 'mchebet@parent.stteresa.edu', address: 'Othaya, Nyeri County, Kenya', admissionDate: '2025-08-19', status: 'active', feeBalance: 12500, photo: '' }
     ]);
     DB.set('leadership', []);
     DB.set('teachers', [
-      { id: DB.uid(), firstName: 'Margaret', lastName: 'OBrien', email: 'mobrien@stteresa.edu', subject: 'Mathematics', role: 'Teacher', phone: '(555) 100-2000', qualification: 'M.Ed.', status: 'active', photo: '', bio: 'M.Ed. with 28 years in Catholic education.', staffNo: 'STA-T001' },
-      { id: DB.uid(), firstName: 'David', lastName: 'Chen', email: 'dchen@stteresa.edu', subject: 'Science', role: 'Teacher', phone: '(555) 100-2001', qualification: 'M.S. Engineering', status: 'active', photo: '', bio: 'M.S. in Engineering, inspiring innovators and problem-solvers.', staffNo: 'STA-T002' },
-      { id: DB.uid(), firstName: 'Sarah', lastName: 'Williams', email: 'swilliams@stteresa.edu', subject: 'English', role: 'Teacher', phone: '(555) 100-2002', qualification: 'M.A. Literature', status: 'active', photo: '', bio: 'M.A. Literature, sparking a love of reading and writing.', staffNo: 'STA-T003' },
-      { id: DB.uid(), firstName: 'Catherine Marie', lastName: 'Sr.', email: 'cmarie@stteresa.edu', subject: 'Religion', role: 'Campus Ministry', phone: '(555) 100-2003', qualification: 'Sister of St. Joseph', status: 'active', photo: '', bio: 'Sister of St. Joseph, guiding spiritual growth and service learning.', staffNo: 'STA-T004' },
-      { id: DB.uid(), firstName: 'James', lastName: 'Whitfield', email: 'jwhitfield@stteresa.edu', subject: 'Physical Education', role: 'Athletic Director', phone: '(555) 100-2004', qualification: 'B.S. Kinesiology', status: 'active', photo: '', bio: 'Former college athlete building character through sports.', staffNo: 'STA-T005' },
-      { id: DB.uid(), firstName: 'Thomas', lastName: 'Brennan', email: 'tbrennan@stteresa.edu', subject: 'Religion', role: 'Chaplain', phone: '(555) 100-2005', qualification: 'M.Div.', status: 'active', photo: '', bio: 'Pastor and spiritual father guiding our community in faith.', staffNo: 'STA-T006' },
-      { id: DB.uid(), firstName: 'Anthony', lastName: 'Rossi', email: 'arossi@stteresa.edu', subject: 'Mathematics', role: 'Vice Principal, Academics', phone: '(555) 100-2006', qualification: 'M.A. Curriculum & Instruction', status: 'active', photo: '', bio: 'Championing rigorous and innovative learning.', staffNo: 'STA-T007' },
-      { id: DB.uid(), firstName: 'Linda', lastName: 'Vasquez', email: 'lvasquez@stteresa.edu', subject: 'Administration', role: 'Director of Admissions', phone: '(555) 100-2007', qualification: 'M.B.A.', status: 'active', photo: '', bio: 'Welcoming families through the admissions journey.', staffNo: 'STA-T008' }
+      { id: DB.uid(), firstName: 'Margaret', lastName: 'Wanjiru', email: 'mobrien@stteresa.edu', subject: 'Mathematics', role: 'Teacher', phone: '+254 711 100200', qualification: 'M.Ed.', status: 'active', photo: '', bio: 'M.Ed. with 28 years in Catholic education.', staffNo: 'STA-T001' },
+      { id: DB.uid(), firstName: 'David', lastName: 'Kamau', email: 'dchen@stteresa.edu', subject: 'Science', role: 'Teacher', phone: '+254 711 100201', qualification: 'M.S. Engineering', status: 'active', photo: '', bio: 'M.S. in Engineering, inspiring innovators and problem-solvers.', staffNo: 'STA-T002' },
+      { id: DB.uid(), firstName: 'Sarah', lastName: 'Wanjiku', email: 'swilliams@stteresa.edu', subject: 'English', role: 'Teacher', phone: '+254 711 100202', qualification: 'M.A. Literature', status: 'active', photo: '', bio: 'M.A. Literature, sparking a love of reading and writing.', staffNo: 'STA-T003' },
+      { id: DB.uid(), firstName: 'Catherine Marie', lastName: 'Sr.', email: 'cmarie@stteresa.edu', subject: 'Religion', role: 'Campus Ministry', phone: '+254 711 100203', qualification: 'Sister of St. Joseph', status: 'active', photo: '', bio: 'Sister of St. Joseph, guiding spiritual growth and service learning.', staffNo: 'STA-T004' },
+      { id: DB.uid(), firstName: 'James', lastName: 'Mwangi', email: 'jwhitfield@stteresa.edu', subject: 'Physical Education', role: 'Athletic Director', phone: '+254 711 100204', qualification: 'B.S. Kinesiology', status: 'active', photo: '', bio: 'Former national athlete building character through sports.', staffNo: 'STA-T005' },
+      { id: DB.uid(), firstName: 'Thomas', lastName: 'Kamau', email: 'tbrennan@stteresa.edu', subject: 'Religion', role: 'Chaplain', phone: '+254 711 100205', qualification: 'M.Div.', status: 'active', photo: '', bio: 'Pastor and spiritual father guiding our community in faith.', staffNo: 'STA-T006' },
+      { id: DB.uid(), firstName: 'Anthony', lastName: 'Maina', email: 'arossi@stteresa.edu', subject: 'Mathematics', role: 'Vice Principal, Academics', phone: '+254 711 100206', qualification: 'M.A. Curriculum & Instruction', status: 'active', photo: '', bio: 'Championing rigorous and innovative learning.', staffNo: 'STA-T007' },
+      { id: DB.uid(), firstName: 'Linda', lastName: 'Wanjiku', email: 'lvasquez@stteresa.edu', subject: 'Administration', role: 'Director of Admissions', phone: '+254 711 100207', qualification: 'M.B.A.', status: 'active', photo: '', bio: 'Welcoming families through the admissions journey.', staffNo: 'STA-T008' }
     ]);
     // seed the official classes (no class teacher assigned yet)
     const year = String(new Date().getFullYear());
@@ -140,16 +143,16 @@ function seedData() {
     DB.set('examSchedule', []);
     DB.set('reportCards', []);
     DB.set('slider', [
-      { id: DB.uid(), title: 'Welcome to St. Teresa Academy', description: 'Excellence in Catholic education since 1962', imageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80' },
-      { id: DB.uid(), title: 'Nurturing Young Minds', description: 'Pre-K through Grade 12 college preparatory programs', imageUrl: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80' },
+      { id: DB.uid(), title: 'Welcome to St. Teresa Academy', description: 'Excellence in Catholic education since 1989', imageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80' },
+      { id: DB.uid(), title: 'Nurturing Young Minds', description: "Pre-Primary through Senior School, aligned to Kenya's CBC", imageUrl: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80' },
       { id: DB.uid(), title: 'Faith & Service', description: 'Forming leaders with hearts for others', imageUrl: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80' }
     ]);
     DB.set('logo', { name: 'St. Teresa Kanyange Academy', initials: 'STK', imageUrl: '' });
     DB.set('timetable', []);
     DB.set('exams', []);
     DB.set('payments', [
-      { id: DB.uid(), receiptNo: 'RCP-1001', studentName: 'John Smith', studentId: '', amount: 4200, item: 'Tuition Installment (Q1)', method: 'Card', date: '2026-09-05', recordedBy: 'secretary' },
-      { id: DB.uid(), receiptNo: 'RCP-1002', studentName: 'Emily Johnson', studentId: '', amount: 300, item: 'Laboratory Fee', method: 'Cash', date: '2026-09-12', recordedBy: 'secretary' }
+      { id: DB.uid(), receiptNo: 'RCP-1001', studentName: 'John Kamau', studentId: '', amount: 4200, item: 'Tuition Installment (Term 1)', method: 'M-Pesa', date: '2026-09-05', recordedBy: 'secretary' },
+      { id: DB.uid(), receiptNo: 'RCP-1002', studentName: 'Emily Chebet', studentId: '', amount: 300, item: 'Laboratory Fee', method: 'Cash', date: '2026-09-12', recordedBy: 'secretary' }
     ]);
     DB.set('settings', { schoolName: 'St. Teresa Kanyange Academy', motto: 'Unity is Strength', currency: 'Ksh', academicYear: year, term: '1', timezone: 'Africa/Nairobi' });
     localStorage.setItem('sta_seeded', '1');
@@ -202,6 +205,24 @@ function migrateSchoolModules() {
     });
     DB.set('classes', list);
     try { localStorage.setItem('sta_officialClassesSeeded', '1'); } catch (e) { /* retried next load */ }
+  }
+  /* One-time additive migration: give installs seeded before Senior School
+     existed the Grade 10–12 streams (safe to run once; never removes data). */
+  if (!localStorage.getItem('sta_seniorClassesSeeded')) {
+    const list = DB.get('classes');
+    const have = new Set(list.map(c => c.name));
+    let added = false;
+    OFFICIAL_CLASSES.forEach((name, i) => {
+      if (have.has(name)) return;
+      list.push({
+        id: DB.uid(), name, level: i + 1, academicYear: year, term: '1',
+        teacherId: '', teacherName: '', subjects: DEFAULT_SUBJECTS.slice(),
+        status: 'active', createdAt: today()
+      });
+      added = true;
+    });
+    if (added) DB.set('classes', list);
+    try { localStorage.setItem('sta_seniorClassesSeeded', '1'); } catch (e) { /* retried next load */ }
   }
   ensure('classAssignments', []);
   ensure('homework', []);
@@ -1843,8 +1864,14 @@ function loadAdminDashboard() {
   // grade distribution chart
   const chart = document.getElementById('gradeChart');
   if (chart) {
-    const grades = ['Pre-K','K','1','2','3','4','5','6','7','8','9','10','11','12'];
-    const counts = grades.map(g => students.filter(x => String(x.grade) === g).length);
+    const grades = ['PP1','PP2','1','2','3','4','5','6','7','8','9','10','11','12'];
+    const norm = v => String(v == null ? '' : v).trim().replace(/^Grade\s+/i, '').toUpperCase();
+    const counts = grades.map(g => students.filter(x => {
+      const raw = norm(x.grade || x.className);
+      const key = raw.split(':')[0].trim();
+      const target = g.toUpperCase();
+      return key === target || raw === target || raw.startsWith(target + ' ');
+    }).length);
     const max = Math.max(...counts, 1);
     chart.innerHTML = grades.map((g, i) => {
       const h = Math.max(6, Math.round((counts[i] / max) * 140));
@@ -3137,14 +3164,14 @@ function initExamBuilder() {
   // preload subjects/grades
   const subSel = document.getElementById('examSubject');
   if (subSel && !subSel.options.length) {
-    ['Mathematics','Science','English','Social Studies','Religion','Spanish','Art','Physical Education','Computer Science'].forEach(x => {
+    ['Mathematics','Science','English','Kiswahili','Social Studies','Religion','Art','Physical Education','Computer Science'].forEach(x => {
       subSel.innerHTML += `<option value="${x}">${x}</option>`;
     });
   }
   const gradeSel = document.getElementById('examGrade');
   if (gradeSel && !gradeSel.options.length) {
-    ['Pre-K','K','1','2','3','4','5','6','7','8','9','10','11','12'].forEach(x => {
-      gradeSel.innerHTML += `<option value="${x}">Grade ${x}</option>`;
+    ACADEMIC_CLASSES.forEach(x => {
+      gradeSel.innerHTML += `<option value="${x}">${x}</option>`;
     });
   }
 }

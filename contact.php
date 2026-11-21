@@ -99,7 +99,7 @@ $showPoweredBy     = true;
                 <option value="">Select an option</option>
                 <option value="admissions">Admissions</option>
                 <option value="tour">Campus Tour</option>
-                <option value="financial-aid">Financial Aid</option>
+                <option value="financial-aid">Fees &amp; Bursaries</option>
                 <option value="careers">Employment</option>
                 <option value="general">General Inquiry</option>
               </select>

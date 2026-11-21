@@ -16,7 +16,7 @@ $showPoweredBy     = true;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <title>Academics | St. Teresa Kanyange Academy</title>
-  <meta name="description" content="Explore academic programs at St. Teresa Kanyange Academy from Pre-K through Grade 12.">
+  <meta name="description" content="Explore academic programmes at St. Teresa Kanyange Academy from Pre-Primary (PP1) to Senior School (Grade 12), aligned to Kenya's Competency-Based Curriculum.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -34,20 +34,20 @@ $showPoweredBy     = true;
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="eyebrow">Pre-K through Grade 12</span>
+        <span class="eyebrow">Pre-Primary through Senior School</span>
         <h2>A Complete Educational Journey</h2>
-        <p>Our comprehensive programs build on one another, creating a seamless path from early childhood wonder to college-ready confidence.</p>
+        <p>Our comprehensive programmes build on one another, creating a seamless path from early-years wonder to university- and career-ready confidence.</p>
       </div>
       <div class="programs-grid">
         <div class="program-card reveal">
           <div class="program-header">
-            <h3>Early Childhood</h3>
-            <span class="grade-range">Pre-K &ndash; Kindergarten</span>
+            <h3>Pre-Primary</h3>
+            <span class="grade-range">PP1 &ndash; PP2</span>
           </div>
           <div class="program-body">
             <ul>
-              <li>Play-based, faith-centered learning</li>
-              <li>Small class sizes (max 16 students)</li>
+              <li>Play-based, faith-centred CBC learning</li>
+              <li>Small class sizes (max 16 learners)</li>
               <li>Social &amp; emotional development</li>
               <li>Introduction to prayer &amp; community</li>
               <li>Creative arts &amp; outdoor exploration</li>
@@ -57,14 +57,15 @@ $showPoweredBy     = true;
         </div>
         <div class="program-card reveal">
           <div class="program-header">
-            <h3>Elementary School</h3>
-            <span class="grade-range">Grades 1 &ndash; 5</span>
+            <h3>Primary School</h3>
+            <span class="grade-range">Grade 1 &ndash; Grade 6</span>
           </div>
           <div class="program-body">
             <ul>
-              <li>Strong foundation in core subjects</li>
+              <li>Lower Primary (Grade 1&ndash;3) &amp; Middle Primary (Grade 4&ndash;6)</li>
+              <li>Strong foundation in literacy, Kiswahili &amp; numeracy</li>
               <li>Weekly religion &amp; service projects</li>
-              <li>Art, music, PE &amp; Spanish enrichment</li>
+              <li>Art, music, PE &amp; Kiswahili enrichment</li>
               <li>Technology-integrated classrooms</li>
               <li>Reading buddies &amp; mentorship</li>
             </ul>
@@ -73,16 +74,16 @@ $showPoweredBy     = true;
         </div>
         <div class="program-card reveal">
           <div class="program-header">
-            <h3>Middle School</h3>
-            <span class="grade-range">Grades 6 &ndash; 8</span>
+            <h3>Junior School</h3>
+            <span class="grade-range">Grade 7 &ndash; Grade 9</span>
           </div>
           <div class="program-body">
             <ul>
-              <li>Departmentalized instruction</li>
-              <li>STEM &amp; robotics elective track</li>
+              <li>Departmentalised instruction</li>
+              <li>STEM, robotics &amp; coding elective track</li>
               <li>Leadership &amp; campus ministry</li>
-              <li>Athletics &amp; fine arts programs</li>
-              <li>Advisory &amp; mentorship program</li>
+              <li>Sports &amp; fine arts programmes</li>
+              <li>Advisory &amp; mentorship programme</li>
             </ul>
             <a href="admissions.php">Apply Now <i class="fas fa-arrow-right"></i></a>
           </div>
@@ -94,30 +95,30 @@ $showPoweredBy     = true;
   <section class="section section-alt">
     <div class="container">
       <div class="section-header reveal">
-        <span class="eyebrow">High School</span>
-        <h2>College Preparatory Excellence</h2>
-        <p>Our rigorous high school program prepares students for success at the nation's finest colleges and universities.</p>
+        <span class="eyebrow">Senior School</span>
+        <h2>CBC Pathways &amp; University Readiness</h2>
+        <p>Our rigorous Senior School programme prepares students for success at universities and colleges in Kenya and abroad.</p>
       </div>
       <div class="cards-grid">
         <div class="card reveal">
           <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
           <div class="card-body">
-            <h3>Honors &amp; AP Courses</h3>
-            <p>Over 15 Advanced Placement courses spanning sciences, mathematics, literature, history, and the arts.</p>
+            <h3>CBC Pathways</h3>
+            <p>STEM, Social Sciences, and Arts &amp; Sports Science pathways leading to national assessments.</p>
           </div>
         </div>
         <div class="card reveal">
           <div class="card-icon"><i class="fas fa-university"></i></div>
           <div class="card-body">
-            <h3>Dual Enrollment</h3>
-            <p>Earn college credits through partnerships with local universities while still in high school.</p>
+            <h3>KNEC Assessments</h3>
+            <p>Learners sit for national assessments at each level, including the KJSEA and the Senior School final examination.</p>
           </div>
         </div>
         <div class="card reveal">
           <div class="card-icon"><i class="fas fa-compass"></i></div>
           <div class="card-body">
-            <h3>College Counseling</h3>
-            <p>Dedicated counselors guide families through applications, financial aid, and scholarship opportunities.</p>
+            <h3>Career &amp; University Guidance</h3>
+            <p>Dedicated counsellors guide families through university applications, HELB funding, and scholarship opportunities.</p>
           </div>
         </div>
         <div class="card reveal">
@@ -138,9 +139,36 @@ $showPoweredBy     = true;
           <div class="card-icon"><i class="fas fa-trophy"></i></div>
           <div class="card-body">
             <h3>Athletics</h3>
-            <p>18 varsity and junior varsity teams competing at championship levels across all seasons.</p>
+            <p>School teams competing at county and national levels in football, volleyball, basketball, netball, and athletics.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Kenyan Education System</span>
+        <h2>Our CBC Grade Structure</h2>
+        <p>Our levels follow Kenya's Competency-Based Curriculum, from Pre-Primary through Senior School.</p>
+      </div>
+      <div class="table-wrapper reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Classes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Pre-Primary</td><td>PP1, PP2</td></tr>
+            <tr><td>Lower Primary</td><td>Grade 1, Grade 2, Grade 3</td></tr>
+            <tr><td>Middle Primary</td><td>Grade 4, Grade 5, Grade 6</td></tr>
+            <tr><td>Junior School</td><td>Grade 7, Grade 8, Grade 9</td></tr>
+            <tr><td>Senior School</td><td>Grade 10, Grade 11, Grade 12</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -165,7 +193,7 @@ $showPoweredBy     = true;
             <tr>
               <td>7:45 AM</td>
               <td>Morning Prayer &amp; Announcements</td>
-              <td>Gymnasium</td>
+              <td>Assembly Hall</td>
             </tr>
             <tr>
               <td>8:00 AM</td>
@@ -185,7 +213,7 @@ $showPoweredBy     = true;
             <tr>
               <td>9:55 AM</td>
               <td>Break / Snack</td>
-              <td>Cafeteria</td>
+              <td>Dining Hall</td>
             </tr>
             <tr>
               <td>10:10 AM</td>
@@ -200,7 +228,7 @@ $showPoweredBy     = true;
             <tr>
               <td>11:50 AM</td>
               <td>Lunch</td>
-              <td>Cafeteria</td>
+              <td>Dining Hall</td>
             </tr>
             <tr>
               <td>12:35 PM</td>

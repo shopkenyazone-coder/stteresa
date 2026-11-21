@@ -16,7 +16,7 @@ $showPoweredBy     = true;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <title>St. Teresa Kanyange Academy | Excellence in Education</title>
-  <meta name="description" content="St. Teresa Kanyange is a premier Catholic school offering holistic education from Pre-K through Grade 12, rooted in faith, excellence, and service.">
+  <meta name="description" content="St. Teresa Kanyange is a premier Catholic school offering holistic, CBC-aligned education from Pre-Primary (PP1) through Senior School (Grade 12), rooted in faith, excellence, and service.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -73,7 +73,7 @@ $showPoweredBy     = true;
           <div class="card-icon"><i class="fas fa-book-open"></i></div>
           <div class="card-body">
             <h3>Rigorous Academics</h3>
-            <p>College-preparatory curriculum with honors, AP, and dual-enrollment courses designed to challenge and inspire every learner.</p>
+            <p>Kenya's Competency-Based Curriculum enriched with projects, practicals, and pathways designed to challenge and inspire every learner.</p>
           </div>
         </div>
         <div class="card reveal">
@@ -129,11 +129,11 @@ $showPoweredBy     = true;
           <span class="eyebrow">Our Story</span>
           <h2>A Legacy of Faith &amp; Learning</h2>
           <p>St. Teresa Kanyange Academy was founded in 1989, has grown from a small parish school into one of the region's most respected Catholic educational institutions.</p>
-          <p>For over six decades, we have remained faithful to our mission: to form students who excel academically, lead with integrity, and serve their communities with compassion.</p>
+          <p>For over three decades, we have remained faithful to our mission: to form students who excel academically, lead with integrity, and serve their communities with compassion.</p>
           <ul class="about-features">
             <li>Fully Accredited</li>
             <li>Catholic School Identity</li>
-            <li>College Prep Excellence</li>
+            <li>CBC &amp; Senior School Pathways</li>
             <li>Service-Centered Values</li>
             <li>Modern Facilities</li>
             <li>Experienced Faculty</li>
@@ -149,14 +149,14 @@ $showPoweredBy     = true;
       <div class="section-header reveal">
         <span class="eyebrow">Academics</span>
         <h2>Programs for Every Stage</h2>
-        <p>From early childhood through high school, our programs meet students where they are and challenge them to reach their full potential.</p>
+        <p>From Pre-Primary through Senior School, our programmes meet students where they are and challenge them to reach their full potential.</p>
       </div>
       <div class="programs-grid">
         <div class="program-card reveal">
           <div class="program-img" id="progEarlyCard"></div>
           <div class="program-header">
-            <h3>Early Childhood</h3>
-            <span class="grade-range">Pre-K &ndash; Kindergarten</span>
+            <h3>Pre-Primary</h3>
+            <span class="grade-range">PP1 &ndash; PP2</span>
           </div>
           <div class="program-body">
             <ul>
@@ -171,14 +171,14 @@ $showPoweredBy     = true;
         <div class="program-card reveal">
           <div class="program-img" id="progElemCard"></div>
           <div class="program-header">
-            <h3>Elementary School</h3>
-            <span class="grade-range">Grades 1 &ndash; 5</span>
+            <h3>Primary School</h3>
+            <span class="grade-range">Grade 1 &ndash; Grade 6</span>
           </div>
           <div class="program-body">
             <ul>
               <li>Strong foundation in core subjects</li>
               <li>Weekly religion &amp; service projects</li>
-              <li>Art, music, PE &amp; Spanish enrichment</li>
+              <li>Art, music, PE &amp; Kiswahili enrichment</li>
               <li>Technology-integrated classrooms</li>
             </ul>
             <a href="academics.php">Explore Program <i class="fas fa-arrow-right"></i></a>
@@ -187,13 +187,13 @@ $showPoweredBy     = true;
         <div class="program-card reveal">
           <div class="program-img" id="progMiddleCard"></div>
           <div class="program-header">
-            <h3>Middle &amp; High School</h3>
-            <span class="grade-range">Grades 6 &ndash; 12</span>
+            <h3>Junior &amp; Senior School</h3>
+            <span class="grade-range">Grade 7 &ndash; Grade 12</span>
           </div>
           <div class="program-body">
             <ul>
-              <li>Honors, AP &amp; dual-enrollment courses</li>
-              <li>Dedicated college counseling</li>
+              <li>CBC pathways, projects &amp; practicals</li>
+              <li>Dedicated career &amp; university guidance</li>
               <li>Championship athletics &amp; arts</li>
               <li>Leadership &amp; campus ministry</li>
             </ul>
@@ -215,7 +215,7 @@ $showPoweredBy     = true;
         <div class="teacher-card reveal">
           <div class="teacher-avatar"><i class="fas fa-user"></i></div>
           <div class="teacher-info">
-            <h3>Mrs. Margaret O'Brien</h3>
+            <h3>Mrs. Margaret Wanjiru</h3>
             <span class="subject">Principal</span>
             <p>M.Ed. with 28 years in Catholic education, leading with wisdom and heart.</p>
           </div>
@@ -223,7 +223,7 @@ $showPoweredBy     = true;
         <div class="teacher-card reveal">
           <div class="teacher-avatar"><i class="fas fa-user"></i></div>
           <div class="teacher-info">
-            <h3>Mr. David Chen</h3>
+            <h3>Mr. David Kamau</h3>
             <span class="subject">STEM Director</span>
             <p>M.S. in Engineering, inspiring the next generation of innovators and problem-solvers.</p>
           </div>
@@ -239,9 +239,9 @@ $showPoweredBy     = true;
         <div class="teacher-card reveal">
           <div class="teacher-avatar"><i class="fas fa-user"></i></div>
           <div class="teacher-info">
-            <h3>Mr. James Whitfield</h3>
+            <h3>Mr. James Mwangi</h3>
             <span class="subject">Athletic Director</span>
-            <p>Former college athlete building character through championship-caliber sports.</p>
+            <p>Former national athlete building character through championship-caliber sports.</p>
           </div>
         </div>
       </div>
@@ -262,7 +262,7 @@ $showPoweredBy     = true;
             <span class="month">October</span>
           </div>
           <div class="event-body">
-            <h3>Fall Open House</h3>
+            <h3>Term 1 Open Day</h3>
             <p>Tour our campus, meet faculty and students, and discover what makes St. Teresa special.</p>
             <div class="event-meta">
               <span><i class="fas fa-clock"></i> 9:00 AM</span>
@@ -276,11 +276,11 @@ $showPoweredBy     = true;
             <span class="month">October</span>
           </div>
           <div class="event-body">
-            <h3>Homecoming Week Begins</h3>
-            <p>Spirit week, pep rally, and the big Friday night football game under the lights.</p>
+            <h3>Sports Day &amp; Athletics Gala</h3>
+            <p>Inter-house sports, a march past, and the big football final on the school grounds.</p>
             <div class="event-meta">
               <span><i class="fas fa-clock"></i> All Week</span>
-              <span><i class="fas fa-map-marker-alt"></i> Stadium</span>
+              <span><i class="fas fa-map-marker-alt"></i> School Grounds</span>
             </div>
           </div>
         </div>
@@ -290,11 +290,11 @@ $showPoweredBy     = true;
             <span class="month">November</span>
           </div>
           <div class="event-body">
-            <h3>Fall Concert &amp; Art Show</h3>
+            <h3>Music &amp; Art Festival</h3>
             <p>Join us for an evening of music and visual arts celebrating our students' talents.</p>
             <div class="event-meta">
               <span><i class="fas fa-clock"></i> 7:00 PM</span>
-              <span><i class="fas fa-map-marker-alt"></i> Performing Arts Center</span>
+              <span><i class="fas fa-map-marker-alt"></i> School Hall</span>
             </div>
           </div>
         </div>
@@ -311,11 +311,11 @@ $showPoweredBy     = true;
       </div>
       <div class="testimonials-track">
         <div class="testimonial reveal">
-          <p>St. Teresa Academy transformed my daughter's life. The teachers genuinely care, and the faith formation gave her a strong moral compass. She arrived at college far ahead of her peers.</p>
+          <p>St. Teresa Academy transformed my daughter's life. The teachers genuinely care, and the faith formation gave her a strong moral compass. She joined university far ahead of her peers.</p>
           <div class="testimonial-author">
             <div class="avatar">SM</div>
             <div>
-              <h4>Sarah Mitchell</h4>
+              <h4>Grace Wanjiku</h4>
               <span>Parent, Class of 2026</span>
             </div>
           </div>
@@ -325,17 +325,17 @@ $showPoweredBy     = true;
           <div class="testimonial-author">
             <div class="avatar">MR</div>
             <div>
-              <h4>Michael Rodriguez</h4>
+              <h4>Michael Otieno</h4>
               <span>Alumnus, Class of 2009</span>
             </div>
           </div>
         </div>
         <div class="testimonial reveal">
-          <p>The STEM program here is incredible. I built my first robot in 8th grade, and now I'm studying biomedical engineering in college. St. Teresa made it all possible.</p>
+          <p>The STEM program here is incredible. I built my first robot in Grade 8, and now I'm studying biomedical engineering at university. St. Teresa made it all possible.</p>
           <div class="testimonial-author">
             <div class="avatar">AL</div>
             <div>
-              <h4>Aisha Lawson</h4>
+              <h4>Aisha Amina</h4>
               <span>Alumna, Class of 2021</span>
             </div>
           </div>
@@ -347,7 +347,7 @@ $showPoweredBy     = true;
   <section class="cta-banner" id="ctaBanner">
     <div class="container">
       <h2>Ready to Join the St. Teresa Family?</h2>
-      <p>Applications for the 2027–2028 school year are now open. Schedule a campus tour and see for yourself why families choose St. Teresa Academy.</p>
+      <p>Applications for the 2027 academic year are now open. Schedule a campus tour and see for yourself why families choose St. Teresa Academy.</p>
       <div class="hero-buttons">
         <a href="admissions.php" class="btn btn-primary">Apply for Admission</a>
         <a href="contact.php" class="btn btn-outline">Schedule a Tour</a>
@@ -415,7 +415,7 @@ $showPoweredBy     = true;
                 <option value="">Select an option</option>
                 <option value="admissions">Admissions</option>
                 <option value="tour">Campus Tour</option>
-                <option value="financial-aid">Financial Aid</option>
+                <option value="financial-aid">Fees &amp; Bursaries</option>
                 <option value="general">General Inquiry</option>
               </select>
             </div>

@@ -16,7 +16,7 @@ $showPoweredBy     = true;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <title>Admissions | St. Teresa Kanyange Academy</title>
-  <meta name="description" content="Apply to St. Teresa Kanyange Academy. Learn about our admissions process, tuition, and financial aid.">
+  <meta name="description" content="Apply to St. Teresa Kanyange Academy. Learn about our admissions process, fees, and bursaries.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -64,31 +64,31 @@ $showPoweredBy     = true;
       <div class="section-header reveal">
         <span class="eyebrow">Tuition &amp; Aid</span>
         <h2>An Investment in Their Future</h2>
-        <p>We are committed to making a St. Teresa education accessible to every family. Over 40% of our students receive financial assistance.</p>
+        <p>Clear, transparent fees for every level, with bursary guidance available from the school office.</p>
       </div>
       <div class="cards-grid">
         <div class="card reveal">
           <div class="card-icon"><i class="fas fa-child"></i></div>
           <div class="card-body">
-            <h3>Early Childhood</h3>
+            <h3>Pre-Primary</h3>
             <p><strong style="font-size:1.6rem;color:var(--navy);display:block;margin:10px 0">Ksh 8,500</strong>per year</p>
-            <p>Pre-K &ndash; Kindergarten. Includes materials, lunch, and enrichment programs.</p>
+            <p>PP1 &ndash; PP2. Includes materials, lunch, and enrichment activities.</p>
           </div>
         </div>
         <div class="card reveal">
           <div class="card-icon"><i class="fas fa-book"></i></div>
           <div class="card-body">
-            <h3>Elementary &amp; Middle</h3>
+            <h3>Primary &amp; Junior</h3>
             <p><strong style="font-size:1.6rem;color:var(--navy);display:block;margin:10px 0">Ksh 12,500</strong>per year</p>
-            <p>Grades 1 &ndash; 8. Includes technology fee, athletics, and field trips.</p>
+            <p>Grade 1 &ndash; Grade 9. Includes technology fee, sports, and field trips.</p>
           </div>
         </div>
         <div class="card reveal">
           <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
           <div class="card-body">
-            <h3>High School</h3>
+            <h3>Senior School</h3>
             <p><strong style="font-size:1.6rem;color:var(--navy);display:block;margin:10px 0">Ksh 16,000</strong>per year</p>
-            <p>Grades 9 &ndash; 12. Includes AP courses, college counseling, and lab fees.</p>
+            <p>Grade 10 &ndash; Grade 12. Includes CBC pathways, career guidance, and laboratory fees.</p>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ $showPoweredBy     = true;
             <span class="toggle">+</span>
           </button>
           <div class="faq-answer">
-            <p>Priority applications are due February 1st for the following school year. However, we accept applications on a rolling basis throughout the year as space permits. Early application is encouraged for the best placement opportunities.</p>
+            <p>Priority applications are due in January for the Term 1 intake. However, we accept applications on a rolling basis throughout the year as space permits. Early application is encouraged for the best placement opportunities.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -123,20 +123,11 @@ $showPoweredBy     = true;
         </div>
         <div class="faq-item">
           <button class="faq-question">
-            Is financial aid available?
-            <span class="toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Over 40% of our families receive tuition assistance through our need-based financial aid program. Awards range from 10% to 75% of tuition. Apply through FACTS Financial Aid when you submit your application.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
             What does the admissions assessment involve?
             <span class="toggle">+</span>
           </button>
           <div class="faq-answer">
-            <p>The assessment is age-appropriate and designed to understand each student's strengths and learning style â€” not to exclude. Younger students complete a readiness screening, while older students take a diagnostic assessment in reading and math. Every applicant also enjoys a shadow day on campus.</p>
+            <p>The assessment is age-appropriate and designed to understand each student's strengths and learning style &mdash; not to exclude. Younger students complete a readiness screening, while older students take a diagnostic assessment in reading and math. Every applicant also enjoys a shadow day on campus.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -154,7 +145,7 @@ $showPoweredBy     = true;
             <span class="toggle">+</span>
           </button>
           <div class="faq-answer">
-            <p>We offer 18 varsity and JV sports teams, robotics and coding clubs, dramatic productions, band and choir, student government, National Honor Society, Campus Ministry, service clubs, and more. There's something for every passion!</p>
+            <p>We offer school sports teams in football, volleyball, basketball, netball and athletics, robotics and coding clubs, drama, choir, student council, Scouts, St. John Ambulance, Campus Ministry, and service clubs. There's something for every passion!</p>
           </div>
         </div>
       </div>

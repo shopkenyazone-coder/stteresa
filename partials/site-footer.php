@@ -24,7 +24,7 @@ $showPoweredBy    = $showPoweredBy ?? true;
               <span>Unity is Strength</span>
             </div>
           </div>
-          <p>Nurturing young minds and inspiring hearts since 1962. A Catholic college-preparatory school serving Pre-K through Grade 12.</p>
+          <p>Nurturing young minds and inspiring hearts since 1989. A Catholic CBC school serving Pre-Primary (PP1) through Senior School (Grade 12).</p>
           <div class="social-links">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>

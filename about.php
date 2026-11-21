@@ -45,7 +45,7 @@ $showPoweredBy     = true;
           <span class="eyebrow">Our History</span>
           <h2>Rooted in Faith, Growing in Excellence</h2>
           <p>St. Teresa Academy was founded in 1989 by the Sisters of St. Joseph with a simple but profound vision: to provide an exceptional education grounded in the Catholic faith.</p>
-          <p>What began as a small parish school with 47 students has blossomed into a thriving community of over 850 students, serving families across the region with a tradition of academic excellence and spiritual formation that spans more than six decades.</p>
+          <p>What began as a small parish school with 47 students has blossomed into a thriving community of over 850 students, serving families across the region with a tradition of academic excellence and spiritual formation that spans more than three decades.</p>
           <p>Our namesake, St. Teresa of Ávila, reminds us that education is not merely about filling the mind, but about setting hearts on fire with purpose and love.</p>
           <a href="admissions.php" class="btn btn-navy">Join Our Community</a>
         </div>
@@ -97,7 +97,7 @@ $showPoweredBy     = true;
         <div class="teacher-card reveal">
           <div class="teacher-avatar"><i class="fas fa-user"></i></div>
           <div class="teacher-info">
-            <h3>Mrs. Margaret O'Brien</h3>
+            <h3>Mrs. Margaret Wanjiru</h3>
             <span class="subject">Principal</span>
             <p>M.Ed., 28 years in Catholic education, leading with wisdom, faith, and an open heart.</p>
           </div>
@@ -105,7 +105,7 @@ $showPoweredBy     = true;
         <div class="teacher-card reveal">
           <div class="teacher-avatar"><i class="fas fa-user"></i></div>
           <div class="teacher-info">
-            <h3>Fr. Thomas Brennan</h3>
+            <h3>Fr. Thomas Kamau</h3>
             <span class="subject">Chaplain</span>
             <p>Pastor and spiritual father guiding our community in faith, prayer, and service.</p>
           </div>
@@ -113,7 +113,7 @@ $showPoweredBy     = true;
         <div class="teacher-card reveal">
           <div class="teacher-avatar"><i class="fas fa-user"></i></div>
           <div class="teacher-info">
-            <h3>Mr. Anthony Rossi</h3>
+            <h3>Mr. Anthony Maina</h3>
             <span class="subject">Vice Principal, Academics</span>
             <p>M.A. Curriculum &amp; Instruction, championing rigorous and innovative learning.</p>
           </div>
@@ -121,7 +121,7 @@ $showPoweredBy     = true;
         <div class="teacher-card reveal">
           <div class="teacher-avatar"><i class="fas fa-user"></i></div>
           <div class="teacher-info">
-            <h3>Mrs. Linda Vasquez</h3>
+            <h3>Mrs. Linda Wanjiku</h3>
             <span class="subject">Director of Admissions</span>
             <p>Welcoming families and guiding them through every step of the admissions journey.</p>
           </div>

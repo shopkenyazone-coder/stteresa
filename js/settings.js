@@ -245,7 +245,7 @@ const SettingsUI = {
         </div>
         <div class="form-group">
           <label for="pfPhone">Phone number</label>
-          <input type="tel" id="pfPhone" value="${esc(u.phone || stu?.parentPhone || '')}" placeholder="e.g. (555) 100-2000">
+          <input type="tel" id="pfPhone" value="${esc(u.phone || stu?.parentPhone || '')}" placeholder="e.g. +254 712 345678">
         </div>
         ${s.role === 'student' ? `
         <div class="form-group">
