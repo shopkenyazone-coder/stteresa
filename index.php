@@ -187,8 +187,8 @@ $showPoweredBy     = true;
         <div class="program-card reveal">
           <div class="program-img" id="progMiddleCard"></div>
           <div class="program-header">
-            <h3>Junior &amp; Senior School</h3>
-            <span class="grade-range">Grade 7 &ndash; Grade 12</span>
+            <h3>Junior School</h3>
+            <span class="grade-range">Grade 7 &ndash; Grade 9</span>
           </div>
           <div class="program-body">
             <ul>
