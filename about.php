@@ -130,6 +130,17 @@ $showPoweredBy     = true;
     </div>
   </section>
 
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Our Journey</span>
+        <h2>School History</h2>
+        <p>Milestones, memories, and moments that have shaped St. Teresa Kanyange Academy.</p>
+      </div>
+      <div class="cards-grid" id="historyGrid"></div>
+    </div>
+  </section>
+
   <section class="cta-banner">
     <div class="container">
       <h2>Experience the St. Teresa Difference</h2>

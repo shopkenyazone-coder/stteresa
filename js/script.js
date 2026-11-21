@@ -127,6 +127,43 @@ function renderLeadership() {
   if (leadershipGrid) leadershipGrid.innerHTML = html;
 }
 
+async function renderHistory() {
+  const grid = document.getElementById('historyGrid');
+  if (!grid) return;
+
+  let items = [];
+  try { items = JSON.parse(localStorage.getItem('sta_history') || '[]'); } catch (e) { items = []; }
+  items = (Array.isArray(items) ? items : [])
+    .filter(it => it && it.published !== false)
+    .sort((a, b) => String(a.year || '').localeCompare(String(b.year || '')));
+
+  if (!items.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-light)"><i class="fas fa-clock-rotate-left" style="font-size:2rem;color:var(--border);display:block;margin-bottom:10px"></i><h4 style="color:var(--navy)">School history coming soon</h4><p style="font-size:0.9rem">Milestones will appear here once added in the admin panel.</p></div>`;
+    return;
+  }
+
+  const resolved = await Promise.all(items.map(async it => {
+    let src = it.imageUrl || '';
+    if (!src && it.imageKey && typeof ImageStore !== 'undefined') {
+      try { src = await ImageStore.get(it.imageKey) || ''; } catch (e) { src = ''; }
+    }
+    if (src && typeof ImageUpload !== 'undefined') src = ImageUpload.assetURL(src);
+    return { ...it, src };
+  }));
+
+  grid.innerHTML = resolved.map(it => `
+    <div class="card reveal">
+      ${it.src
+        ? `<img class="history-photo" src="${escPublic(it.src)}" alt="${escPublic(it.title)}">`
+        : `<div class="card-icon"><i class="fas fa-landmark"></i></div>`}
+      <div class="card-body">
+        <span class="eyebrow" style="display:block;margin-bottom:6px">${escPublic(it.year)}</span>
+        <h3>${escPublic(it.title)}</h3>
+        <p>${escPublic(it.description || '')}</p>
+      </div>
+    </div>`).join('');
+}
+
 function posOrder(p) {
   return p === 'director1' ? 0 : p === 'director2' ? 1 : p === 'headteacher' ? 2 : 3;
 }
@@ -184,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadSiteLogo();
   loadSiteImages();
   renderLeadership();
+  renderHistory();
   initHeroSlider();
 
   // Mobile nav toggle

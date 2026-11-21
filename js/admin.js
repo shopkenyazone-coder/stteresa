@@ -148,6 +148,7 @@ function seedData() {
       { id: DB.uid(), title: 'Faith & Service', description: 'Forming leaders with hearts for others', imageUrl: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80' }
     ]);
     DB.set('logo', { name: 'St. Teresa Kanyange Academy', initials: 'STK', imageUrl: '' });
+    DB.set('history', []);
     DB.set('timetable', []);
     DB.set('exams', []);
     DB.set('payments', [
@@ -235,6 +236,7 @@ function migrateSchoolModules() {
   ensure('parents', []);
   ensure('examSchedule', []);
   ensure('reportCards', []);
+  ensure('history', []);
   ensure('exams', []);
   ensure('examResults', []);
   ensure('studentTransfers', []);
@@ -1722,6 +1724,7 @@ function initAdmin() {
 function bootAdmin() {
   loadAdminDashboard();
   initSliderSection();
+  initHistorySection();
   initLogoSection();
   initStudentsSection();
   initLeadershipSection();
@@ -2018,6 +2021,172 @@ async function deleteSlide(id) {
   }
   renderSlider();
   toast('Slide deleted.', 'info');
+}
+
+/* ---------- ADMIN: SCHOOL HISTORY ---------- */
+function initHistorySection() {
+  renderHistoryAdmin();
+
+  const form = document.getElementById('historyForm');
+  const fileInput = document.getElementById('historyImage');
+  const preview = document.getElementById('historyPreview');
+  const urlInput = document.getElementById('historyImageUrl');
+
+  if (fileInput && !fileInput.dataset.bound) {
+    fileInput.dataset.bound = '1';
+    fileInput.addEventListener('change', async () => {
+      const f = fileInput.files[0];
+      if (!f) { preview.classList.remove('show'); delete preview.dataset.compressed; return; }
+      try {
+        toast('Optimizing image…', 'info');
+        const dataUrl = await compressImage(f, 1400, 0.82);
+        preview.src = dataUrl;
+        preview.classList.add('show');
+        preview.dataset.compressed = dataUrl;
+        preview.dataset.filename = f.name || 'history.jpg';
+        toast('Photo ready to save.', 'success');
+      } catch (err) {
+        toast(err.message || 'Could not process that photo.', 'error');
+        fileInput.value = '';
+      }
+    });
+  }
+
+  if (urlInput && !urlInput.dataset.bound) {
+    urlInput.dataset.bound = '1';
+    urlInput.addEventListener('input', () => {
+      if (urlInput.value.trim()) {
+        preview.src = urlInput.value.trim();
+        preview.classList.add('show');
+        delete preview.dataset.compressed;
+      }
+    });
+  }
+
+  if (form && !form.dataset.bound) {
+    form.dataset.bound = '1';
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const editingId = document.getElementById('historyEditId').value || '';
+      const items = DB.get('history');
+      const existing = editingId ? items.find(x => x.id === editingId) : null;
+      const year = document.getElementById('historyYear').value.trim();
+      const title = document.getElementById('historyTitle').value.trim();
+      const description = document.getElementById('historyDesc').value.trim();
+      const imageUrl = urlInput ? urlInput.value.trim() : '';
+
+      if (!year) { toast('Please enter a year.', 'error'); return; }
+      if (!title) { toast('Please enter a title.', 'error'); return; }
+
+      let photo = existing ? (existing.imageUrl || '') : '';
+      let imageKey = existing ? (existing.imageKey || '') : '';
+
+      try {
+        if (preview && preview.dataset.compressed) {
+          const key = existing && existing.imageKey ? existing.imageKey : DB.uid();
+          const stored = await uploadOrStoreSiteImage(
+            preview.dataset.compressed,
+            preview.dataset.filename || 'history.jpg',
+            key
+          );
+          photo = stored.path;
+          imageKey = stored.local ? key : '';
+        } else if (imageUrl) {
+          photo = imageUrl;
+          imageKey = '';
+        }
+      } catch (err) {
+        toast(err.message || 'Could not save the photo.', 'error');
+        return;
+      }
+
+      if (existing) {
+        Object.assign(existing, { year, title, description, imageUrl: photo, imageKey });
+      } else {
+        items.push({ id: DB.uid(), year, title, description, imageUrl: photo, imageKey, createdAt: new Date().toISOString() });
+      }
+      DB.set('history', items);
+      form.reset();
+      document.getElementById('historyEditId').value = '';
+      if (preview) { preview.classList.remove('show'); delete preview.dataset.compressed; }
+      closeModal('historyModal');
+      renderHistoryAdmin();
+      toast(existing ? 'History entry updated!' : 'History entry added!');
+    });
+  }
+}
+
+async function renderHistoryAdmin() {
+  const grid = document.getElementById('historyGrid');
+  if (!grid) return;
+  const items = DB.get('history').slice().sort((a, b) => String(b.year).localeCompare(String(a.year)));
+  if (!items.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-clock-rotate-left"></i><h4>No history entries yet</h4><p>Click "Add History Entry" to add your first milestone.</p></div>`;
+    return;
+  }
+  grid.innerHTML = items.map(it => `
+    <div class="slider-item">
+      <img data-history-img="${it.id}" src="${esc(siteAssetURL(it.imageUrl || ''))}" alt="${esc(it.title)}" onerror="this.style.background='linear-gradient(135deg,#0f2c4c,#1a3d5f)';this.removeAttribute('src')">
+      <div class="s-item-actions">
+        <button class="edit" onclick="editHistory('${it.id}')" title="Edit entry"><i class="fas fa-pen"></i></button>
+        <button class="del" onclick="deleteHistory('${it.id}')" title="Delete entry"><i class="fas fa-trash"></i></button>
+      </div>
+      <div class="s-item-info">
+        <h4>${esc(it.year)} — ${esc(it.title)}</h4>
+        <p>${esc(it.description || 'No description')}</p>
+      </div>
+    </div>`).join('');
+
+  for (const it of items) {
+    if (it.imageKey) {
+      try {
+        const dataUrl = await ImageStore.get(it.imageKey);
+        const img = grid.querySelector(`[data-history-img="${it.id}"]`);
+        if (img && dataUrl) img.src = dataUrl;
+      } catch (e) { /* ignore */ }
+    }
+  }
+}
+
+function openHistoryModal() {
+  const form = document.getElementById('historyForm');
+  form.reset();
+  document.getElementById('historyEditId').value = '';
+  document.getElementById('historyModalTitle').textContent = 'Add History Entry';
+  const preview = document.getElementById('historyPreview');
+  preview.classList.remove('show');
+  delete preview.dataset.compressed;
+  openModal('historyModal');
+}
+
+function editHistory(id) {
+  const it = DB.get('history').find(x => x.id === id);
+  if (!it) return;
+  document.getElementById('historyEditId').value = it.id;
+  document.getElementById('historyYear').value = it.year || '';
+  document.getElementById('historyTitle').value = it.title || '';
+  document.getElementById('historyDesc').value = it.description || '';
+  const storedUrl = it.imageUrl || '';
+  document.getElementById('historyImageUrl').value = /^https?:\/\//i.test(storedUrl) ? storedUrl : '';
+
+  document.getElementById('historyModalTitle').textContent = 'Edit History Entry';
+  const preview = document.getElementById('historyPreview');
+  if (it.imageUrl) { preview.src = siteAssetURL(it.imageUrl); preview.classList.add('show'); }
+  else { preview.classList.remove('show'); }
+  delete preview.dataset.compressed;
+  openModal('historyModal');
+}
+
+async function deleteHistory(id) {
+  if (!confirm('Delete this history entry from the About page?')) return;
+  const items = DB.get('history');
+  const it = items.find(x => x.id === id);
+  DB.set('history', items.filter(x => x.id !== id));
+  if (it && it.imageKey) {
+    try { await ImageStore.del(it.imageKey); } catch (e) { /* ignore */ }
+  }
+  renderHistoryAdmin();
+  toast('History entry deleted.', 'info');
 }
 
 /* ---------- ADMIN: LOGO & SITE IMAGES ---------- */

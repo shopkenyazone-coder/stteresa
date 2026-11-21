@@ -962,6 +962,8 @@ table.data-table tbody tr:last-child td { border-bottom: none; }
 
 .s-item-actions .del { background: var(--danger); }
 .s-item-actions .del:hover { background: #b91c1c; }
+.s-item-actions .edit { background: var(--navy-light); }
+.s-item-actions .edit:hover { background: var(--navy); }
 
 /* image upload preview */
 .img-preview {

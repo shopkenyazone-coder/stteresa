@@ -33,6 +33,7 @@ require __DIR__ . '/../src/bootstrap.php';
       <a href="#" data-section="dashboard" data-title="Dashboard" class="active"><i class="fas fa-gauge-high"></i> Dashboard</a>
       <div class="nav-label">Content</div>
       <a href="#" data-section="slider" data-title="Photo Slider"><i class="fas fa-images"></i> Photo Slider</a>
+      <a href="#" data-section="history" data-title="School History"><i class="fas fa-clock-rotate-left"></i> School History</a>
       <a href="#" data-section="logo" data-title="Branding & Images"><i class="fas fa-shield-halved"></i> Branding &amp; Images</a>
       <div class="nav-label">People</div>
       <a href="#" data-section="students" data-title="Students"><i class="fas fa-user-graduate"></i> Students</a>
@@ -173,6 +174,22 @@ require __DIR__ . '/../src/bootstrap.php';
         <div class="panel">
           <div class="panel-body">
             <div class="slider-grid" id="sliderGrid"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHOOL HISTORY -->
+      <section class="page-section" id="sec-history">
+        <div class="section-head">
+          <div>
+            <h2>School History</h2>
+            <p>Add milestones and photos to the history timeline shown on the About page.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openHistoryModal()"><i class="fas fa-plus"></i> Add History Entry</button>
+        </div>
+        <div class="panel">
+          <div class="panel-body">
+            <div class="slider-grid" id="historyGrid"></div>
           </div>
         </div>
       </section>
@@ -945,6 +962,42 @@ require __DIR__ . '/../src/bootstrap.php';
         <div class="form-actions">
           <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Slide</button>
           <button type="button" class="btn btn-outline" onclick="closeModal('sliderModal')">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="historyModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="historyModalTitle">Add History Entry</h3><button class="modal-close" onclick="closeModal('historyModal')">&times;</button></div>
+    <div class="modal-body">
+      <form id="historyForm">
+        <input type="hidden" id="historyEditId">
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Year <span class="req">*</span></label>
+          <input type="text" id="historyYear" placeholder="e.g., 1989" required>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Title <span class="req">*</span></label>
+          <input type="text" id="historyTitle" placeholder="e.g., The Founding of Our School" required>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Description</label>
+          <textarea id="historyDesc" rows="3" placeholder="Describe this milestone"></textarea>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Upload Photo (auto-optimized — any size photo works)</label>
+          <input type="file" id="historyImage" accept="image/*">
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>…or Image URL</label>
+          <input type="url" id="historyImageUrl" placeholder="https://example.com/photo.jpg">
+        </div>
+        <img id="historyPreview" class="img-preview" alt="Preview">
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Entry</button>
+          <button type="button" class="btn btn-outline" onclick="closeModal('historyModal')">Cancel</button>
         </div>
       </form>
     </div>

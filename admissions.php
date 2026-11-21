@@ -36,25 +36,7 @@ $showPoweredBy     = true;
       <div class="section-header reveal">
         <span class="eyebrow">Join Our Family</span>
         <h2>Begin Your St. Teresa Kanyange Journey</h2>
-        <p>We welcome families of all backgrounds who share our commitment to faith-based education. Here's how to apply.</p>
-      </div>
-      <div class="steps">
-        <div class="step reveal">
-          <h3>Inquire</h3>
-          <p>Submit an inquiry form or schedule a campus tour to learn more about our programs and community.</p>
-        </div>
-        <div class="step reveal">
-          <h3>Apply</h3>
-          <p>Complete the online application along with required documents, teacher recommendations, and transcripts.</p>
-        </div>
-        <div class="step reveal">
-          <h3>Assess</h3>
-          <p>Students visit for a shadow day and complete an age-appropriate academic assessment and family interview.</p>
-        </div>
-        <div class="step reveal">
-          <h3>Enroll</h3>
-          <p>Receive your admission decision, accept your offer, and complete registration to join the St. Teresa family.</p>
-        </div>
+        <p>We welcome families of all backgrounds who share our commitment to faith-based education. Contact the school office or visit us to arrange a campus tour and learn how to join our community.</p>
       </div>
     </div>
   </section>

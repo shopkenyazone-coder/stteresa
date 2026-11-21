@@ -375,7 +375,7 @@ $showPoweredBy     = true;
             <div class="icon"><i class="fas fa-phone"></i></div>
             <div>
               <h3>Call Us</h3>
-              <p>+254 700 131515<br>Mon–Fri, 8:00 AM – 4:00 PM</p>
+              <p>+254 700 131515<br>Mon–Fri, 7:15 AM – 5:30 PM</p>
             </div>
           </div>
           <div class="contact-info-item reveal">

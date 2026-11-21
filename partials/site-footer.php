@@ -61,7 +61,7 @@ $showPoweredBy    = $showPoweredBy ?? true;
             <p><i class="fas fa-map-marker-alt"></i> Othaya Town, Nyeri County, Kenya</p>
             <p><i class="fas fa-phone"></i> +254 700 131515</p>
             <p><i class="fas fa-envelope"></i> saintlykids@gmail.com</p>
-            <p><i class="fas fa-clock"></i> Office: Mon–Fri, 8:00 AM – 4:00 PM</p>
+            <p><i class="fas fa-clock"></i> Office: Mon–Fri, 7:15 AM – 5:30 PM</p>
           </div>
         </div>
       </div>
