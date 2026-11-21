@@ -54,8 +54,8 @@ $showPoweredBy     = true;
           <span class="stat-label">Transition</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number" data-target="15" data-suffix=":1">0</span>
-          <span class="stat-label">Student–Teacher Ratio</span>
+          <span class="stat-number" data-target="1" data-suffix=":25">0</span>
+          <span class="stat-label">Teacher–Student Ratio</span>
         </div>
       </div>
     </div>
