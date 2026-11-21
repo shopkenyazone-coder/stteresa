@@ -46,7 +46,7 @@ $showPoweredBy     = true;
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="stat-number" data-target="60" data-suffix="+">0</span>
+          <span class="stat-number" data-target="37" data-suffix="+">0</span>
           <span class="stat-label">Years of Excellence</span>
         </div>
         <div class="stat-item">
