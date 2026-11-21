@@ -50,8 +50,8 @@ $showPoweredBy     = true;
           <span class="stat-label">Years of Excellence</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number" data-target="98" data-suffix="%">0</span>
-          <span class="stat-label">College Acceptance</span>
+          <span class="stat-number" data-target="100" data-suffix="%">0</span>
+          <span class="stat-label">Transition</span>
         </div>
         <div class="stat-item">
           <span class="stat-number" data-target="15" data-suffix=":1">0</span>
