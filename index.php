@@ -315,7 +315,7 @@ $showPoweredBy     = true;
           <div class="testimonial-author">
             <div class="avatar">SM</div>
             <div>
-              <h4>Grace Wanjiku</h4>
+              <h4>Jane Wanjiku</h4>
               <span>Parent, Class of 2026</span>
             </div>
           </div>
@@ -325,7 +325,7 @@ $showPoweredBy     = true;
           <div class="testimonial-author">
             <div class="avatar">MR</div>
             <div>
-              <h4>Michael Otieno</h4>
+              <h4>Peter Wanjohi</h4>
               <span>Alumnus, Class of 2009</span>
             </div>
           </div>
@@ -335,7 +335,7 @@ $showPoweredBy     = true;
           <div class="testimonial-author">
             <div class="avatar">AL</div>
             <div>
-              <h4>Aisha Amina</h4>
+              <h4>John Wainaina</h4>
               <span>Alumna, Class of 2021</span>
             </div>
           </div>
